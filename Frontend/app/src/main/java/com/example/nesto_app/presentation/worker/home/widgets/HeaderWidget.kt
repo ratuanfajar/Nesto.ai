@@ -2,7 +2,6 @@ package com.example.nesto_app.presentation.worker.home.widgets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +15,7 @@ fun HeaderWidget(modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.spacedBy(Dimens.SpacePadding)
     ) {
+
         TopAppBarCommon("Nesto", MaterialTheme.colorScheme.primary)
         Text("Kelola Proyek Furnitur dengan Presisi", style = MaterialTheme.typography.headlineMedium)
         Text("Pantau potongan furnitur dalam satu dasbor terintegrasi.", style = MaterialTheme.typography.bodyMedium)

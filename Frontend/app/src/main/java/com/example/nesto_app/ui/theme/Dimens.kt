@@ -5,6 +5,8 @@ import androidx.compose.ui.unit.dp
 object Dimens {
     val InnerPadding = 20.dp
     val TopPadding = 10.dp
+    val BottomPadding = 40.dp
+
     val IconSize = 24.dp
     val SpacePadding = 8.dp
     val SmallSpacePadding = 2.dp

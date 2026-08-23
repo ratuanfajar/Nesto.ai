@@ -38,7 +38,7 @@ fun TopAppBarCommon(
                     contentDescription = "Back"
                 )
             }
-            Spacer(Modifier.padding(Dimens.SpacePadding))
+            Spacer(Modifier.padding(Dimens.SmallSpacePadding))
         }
         Text(
             text = title,

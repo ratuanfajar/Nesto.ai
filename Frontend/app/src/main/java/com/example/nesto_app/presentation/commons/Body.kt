@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,30 +24,38 @@ fun Body(
     isRefreshing: Boolean = false,
     onRefresh: () -> Unit = {},
     enableRefresh: Boolean = true,
-    verticalAlignment: Arrangement.Vertical = Arrangement.spacedBy(Dimens.SpacePadding),
-    content : @Composable ColumnScope.() -> Unit
+    verticalAlignment: Arrangement.Vertical =
+        Arrangement.spacedBy(Dimens.SpacePadding),
+    content: @Composable ColumnScope.() -> Unit
 ) {
     val body: @Composable BoxScope.() -> Unit = {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(scrollState)
-                .padding(Dimens.InnerPadding)
-                .padding(top = Dimens.TopPadding)
-                .clearFocusOnTap(LocalFocusManager.current),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = verticalAlignment,
-            content = content
-        )
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background,
+            contentColor = MaterialTheme.colorScheme.onBackground
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(scrollState)
+                    .padding(Dimens.InnerPadding)
+                    .padding(top = Dimens.TopPadding)
+                    .clearFocusOnTap(LocalFocusManager.current),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = verticalAlignment,
+                content = content
+            )
+        }
     }
-    if(enableRefresh){
+
+    if (enableRefresh) {
         RefreshCommon(
             modifier = Modifier.fillMaxSize(),
             refreshing = isRefreshing,
             onRefresh = onRefresh,
             content = body
         )
-    }else{
+    } else {
         Box(
             modifier = Modifier.fillMaxSize(),
             content = body
