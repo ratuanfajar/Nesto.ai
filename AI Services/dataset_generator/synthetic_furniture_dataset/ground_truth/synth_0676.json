@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 100.5,
+    "width_cm": 56.8,
+    "height_cm": 84.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.0,
+    "offset_cm": 3.0
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 2,
+    "drawers_count": 2
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 937 MR"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 183.3,
+    "width_cm": 77.1,
+    "height_cm": 105.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.5,
+    "offset_cm": 4.8
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 930 MR"
+  },
+  "drop_pocket": {
+    "length_cm": 103.3,
+    "depth_cm": 32.5,
+    "height_cm": 20.0
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

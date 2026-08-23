@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 165.0,
+    "width_cm": 70.2,
+    "height_cm": 105.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.6,
+    "offset_cm": 5.6
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 15,
+    "finish": "Duco",
+    "finish_color": "Abu",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 66.8,
+    "depth_cm": 29.9,
+    "height_cm": 22.6
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

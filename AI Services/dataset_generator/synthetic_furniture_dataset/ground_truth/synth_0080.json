@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 82.4,
+    "width_cm": 60.4,
+    "height_cm": 80.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.0,
+    "offset_cm": 3.0
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 3,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Walnut",
+    "finish_code": "TH 400 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

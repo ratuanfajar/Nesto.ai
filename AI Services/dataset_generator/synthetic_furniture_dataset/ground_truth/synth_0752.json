@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 160.9,
+    "width_cm": 55.0,
+    "height_cm": 86.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.4,
+    "offset_cm": 4.9
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 829 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 73.6,
+    "depth_cm": 27.2,
+    "height_cm": 19.2
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

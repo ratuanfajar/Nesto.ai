@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 142.8,
+    "width_cm": 67.6,
+    "height_cm": 99.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.3,
+    "offset_cm": 4.6
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 320 MR"
+  },
+  "drop_pocket": {
+    "length_cm": 66.2,
+    "depth_cm": 35.6,
+    "height_cm": 17.0
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

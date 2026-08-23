@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 125.1,
+    "width_cm": 56.8,
+    "height_cm": 84.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.0,
+    "offset_cm": 5.0
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 2,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 25,
+    "finish": "Duco",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

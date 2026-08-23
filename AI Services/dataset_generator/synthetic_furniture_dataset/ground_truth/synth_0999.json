@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 134.2,
+    "width_cm": 64.8,
+    "height_cm": 94.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.3,
+    "offset_cm": 3.7
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 215 MR"
+  },
+  "drop_pocket": null,
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

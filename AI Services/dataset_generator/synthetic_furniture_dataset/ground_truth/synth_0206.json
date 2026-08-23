@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 194.7,
+    "width_cm": 73.9,
+    "height_cm": 106.2
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.5,
+    "offset_cm": 4.9
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 142 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

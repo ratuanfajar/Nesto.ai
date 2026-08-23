@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 194.8,
+    "width_cm": 72.1,
+    "height_cm": 85.2
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.6,
+    "offset_cm": 4.7
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Hitam",
+    "finish_code": "TH 153 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 92.6,
+    "depth_cm": 43.0,
+    "height_cm": 21.8
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

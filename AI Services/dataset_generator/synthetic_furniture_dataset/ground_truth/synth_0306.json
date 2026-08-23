@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 137.9,
+    "width_cm": 52.7,
+    "height_cm": 101.3
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.4,
+    "offset_cm": 4.2
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 25,
+    "finish": "Duco",
+    "finish_color": "Putih",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 131.5,
+    "width_cm": 56.7,
+    "height_cm": 88.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.3,
+    "offset_cm": 3.4
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 25,
+    "finish": "Veneer",
+    "finish_color": "Maple",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 57.0,
+    "depth_cm": 26.2,
+    "height_cm": 22.5
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

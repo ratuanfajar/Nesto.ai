@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 172.9,
+    "width_cm": 67.1,
+    "height_cm": 109.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.8,
+    "offset_cm": 3.8
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 15,
+    "finish": "PU Coating",
+    "finish_color": "Coklat",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 96.0,
+    "depth_cm": 32.2,
+    "height_cm": 16.5
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 188.3,
+    "width_cm": 55.2,
+    "height_cm": 94.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.0,
+    "offset_cm": 5.1
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Walnut",
+    "finish_code": "TH 374 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

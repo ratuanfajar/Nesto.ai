@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 161.6,
+    "width_cm": 79.8,
+    "height_cm": 92.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.0,
+    "offset_cm": 3.1
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 223 AA"
+  },
+  "drop_pocket": {
+    "length_cm": 76.2,
+    "depth_cm": 36.1,
+    "height_cm": 21.8
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

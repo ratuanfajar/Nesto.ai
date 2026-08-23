@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 157.1,
+    "width_cm": 57.6,
+    "height_cm": 87.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.3,
+    "offset_cm": 4.5
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 389 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

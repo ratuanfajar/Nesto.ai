@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 142.1,
+    "width_cm": 74.2,
+    "height_cm": 106.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.3,
+    "offset_cm": 4.5
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 562 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

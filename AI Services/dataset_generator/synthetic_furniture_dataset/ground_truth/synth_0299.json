@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 174.1,
+    "width_cm": 62.9,
+    "height_cm": 100.3
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.5,
+    "offset_cm": 4.3
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Maple",
+    "finish_code": "TH 556 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

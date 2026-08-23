@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 158.7,
+    "width_cm": 53.3,
+    "height_cm": 84.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.0,
+    "offset_cm": 3.0
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 2,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 15,
+    "finish": "Veneer",
+    "finish_color": "Maple",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

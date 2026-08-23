@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 156.9,
+    "width_cm": 56.3,
+    "height_cm": 109.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.6,
+    "offset_cm": 5.4
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 961 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 85.0,
+    "depth_cm": 31.6,
+    "height_cm": 16.1
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

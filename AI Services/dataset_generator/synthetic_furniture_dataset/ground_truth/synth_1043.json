@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 144.2,
+    "width_cm": 68.6,
+    "height_cm": 102.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.1,
+    "offset_cm": 4.6
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 18,
+    "finish": "Melamine",
+    "finish_color": "Abu",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

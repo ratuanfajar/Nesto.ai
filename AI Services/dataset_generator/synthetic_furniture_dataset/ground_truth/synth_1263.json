@@ -1,0 +1,29 @@
+{
+  "furniture_type": "nightstand",
+  "overall_dimensions": {
+    "length_cm": 43.5,
+    "width_cm": 38.0,
+    "height_cm": 45.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.0,
+    "offset_cm": 2.0
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 2
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 837 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

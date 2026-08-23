@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 199.9,
+    "width_cm": 64.3,
+    "height_cm": 98.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.5,
+    "offset_cm": 4.2
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Hitam",
+    "finish_code": "TH 433 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 98.2,
+    "depth_cm": 27.3,
+    "height_cm": 20.2
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

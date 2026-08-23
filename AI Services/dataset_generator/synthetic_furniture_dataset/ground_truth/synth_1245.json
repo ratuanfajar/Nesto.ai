@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 135.6,
+    "width_cm": 51.8,
+    "height_cm": 93.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.4,
+    "offset_cm": 3.2
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 12,
+    "finish": "Veneer",
+    "finish_color": null,
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

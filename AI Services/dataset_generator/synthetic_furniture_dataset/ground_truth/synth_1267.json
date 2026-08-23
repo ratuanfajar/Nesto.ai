@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 135.7,
+    "width_cm": 51.4,
+    "height_cm": 98.3
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.7,
+    "offset_cm": 4.1
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 18,
+    "finish": "PU Coating",
+    "finish_color": "Abu",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 58.4,
+    "depth_cm": 24.9,
+    "height_cm": 21.7
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

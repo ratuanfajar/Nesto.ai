@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 160.5,
+    "width_cm": 64.0,
+    "height_cm": 75.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.0,
+    "offset_cm": 3.0
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 2,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 443 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 93.4,
+    "width_cm": 31.9,
+    "height_cm": 196.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.0,
+    "offset_cm": 2.0
+  },
+  "partitions": {
+    "shelves_count": 5,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 539 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

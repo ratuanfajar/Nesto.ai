@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 130.0,
+    "width_cm": 61.5,
+    "height_cm": 87.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.1,
+    "offset_cm": 5.5
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 853 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 55.4,
+    "depth_cm": 34.1,
+    "height_cm": 17.7
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

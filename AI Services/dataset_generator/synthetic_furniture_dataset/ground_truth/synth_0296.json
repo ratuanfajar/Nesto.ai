@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 187.2,
+    "width_cm": 73.1,
+    "height_cm": 98.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.4,
+    "offset_cm": 6.0
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 200 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

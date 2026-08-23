@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 171.0,
+    "width_cm": 53.4,
+    "height_cm": 97.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.5,
+    "offset_cm": 4.0
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Walnut",
+    "finish_code": "TH 575 MR"
+  },
+  "drop_pocket": {
+    "length_cm": 76.5,
+    "depth_cm": 22.9,
+    "height_cm": 17.0
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

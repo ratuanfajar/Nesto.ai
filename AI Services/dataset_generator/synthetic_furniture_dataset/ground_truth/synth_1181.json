@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 129.4,
+    "width_cm": 70.7,
+    "height_cm": 85.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.1,
+    "offset_cm": 3.6
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 722 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 65.1,
+    "depth_cm": 32.4,
+    "height_cm": 17.1
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 166.3,
+    "width_cm": 65.6,
+    "height_cm": 87.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.6,
+    "offset_cm": 3.9
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 25,
+    "finish": "Melamine",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 73.4,
+    "depth_cm": 36.6,
+    "height_cm": 23.3
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

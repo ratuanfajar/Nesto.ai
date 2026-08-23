@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 167.0,
+    "width_cm": 64.5,
+    "height_cm": 89.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.5,
+    "offset_cm": 3.4
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 282 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 98.6,
+    "depth_cm": 36.9,
+    "height_cm": 22.5
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

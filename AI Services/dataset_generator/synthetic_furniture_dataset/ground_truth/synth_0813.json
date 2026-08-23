@@ -1,0 +1,29 @@
+{
+  "furniture_type": "nightstand",
+  "overall_dimensions": {
+    "length_cm": 50.6,
+    "width_cm": 44.2,
+    "height_cm": 45.3
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.0,
+    "offset_cm": 2.0
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 3
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 631 AA"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

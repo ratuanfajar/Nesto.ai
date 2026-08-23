@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 139.4,
+    "width_cm": 69.7,
+    "height_cm": 96.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.4,
+    "offset_cm": 3.2
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 647 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 72.5,
+    "depth_cm": 31.9,
+    "height_cm": 16.6
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 162.3,
+    "width_cm": 76.3,
+    "height_cm": 86.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.1,
+    "offset_cm": 3.1
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 94.1,
+    "depth_cm": 35.1,
+    "height_cm": 17.6
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

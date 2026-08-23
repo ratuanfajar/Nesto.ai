@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 82.6,
+    "width_cm": 53.2,
+    "height_cm": 87.4
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.0,
+    "offset_cm": 5.0
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 3,
+    "drawers_count": 2
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 25,
+    "finish": "Duco",
+    "finish_color": "Maple",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

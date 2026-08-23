@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 202.5,
+    "width_cm": 54.2,
+    "height_cm": 109.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.3,
+    "offset_cm": 5.2
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Walnut",
+    "finish_code": "TH 149 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 87.9,
+    "depth_cm": 23.8,
+    "height_cm": 24.0
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

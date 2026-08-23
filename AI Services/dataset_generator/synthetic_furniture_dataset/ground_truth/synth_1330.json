@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 151.6,
+    "width_cm": 62.0,
+    "height_cm": 104.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.2,
+    "offset_cm": 4.9
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "Veneer",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 68.9,
+    "depth_cm": 32.3,
+    "height_cm": 22.2
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

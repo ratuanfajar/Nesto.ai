@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 174.2,
+    "width_cm": 52.0,
+    "height_cm": 99.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.8,
+    "offset_cm": 3.9
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 12,
+    "finish": "PU Coating",
+    "finish_color": null,
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 91.9,
+    "depth_cm": 21.1,
+    "height_cm": 17.7
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

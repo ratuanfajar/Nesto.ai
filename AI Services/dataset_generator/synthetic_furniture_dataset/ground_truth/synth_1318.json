@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 166.7,
+    "width_cm": 56.8,
+    "height_cm": 103.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.5,
+    "offset_cm": 5.5
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 241 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

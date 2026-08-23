@@ -1,0 +1,29 @@
+{
+  "furniture_type": "nightstand",
+  "overall_dimensions": {
+    "length_cm": 49.4,
+    "width_cm": 35.8,
+    "height_cm": 52.0
+  },
+  "plinth": {
+    "has_plinth": false,
+    "height_cm": 5.0,
+    "offset_cm": 2.0
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 3
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 18,
+    "finish": "PU Coating",
+    "finish_color": "Maple",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

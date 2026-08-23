@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 127.3,
+    "width_cm": 55.9,
+    "height_cm": 77.4
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.0,
+    "offset_cm": 5.0
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 3,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 919 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}
