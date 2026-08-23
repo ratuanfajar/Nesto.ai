@@ -1,0 +1,86 @@
+[versions]
+agp = "8.11.2"
+kotlin = "2.0.21"
+coreKtx = "1.19.0"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+lifecycleRuntimeKtx = "2.9.4"
+activityCompose = "1.11.0"
+composeBom = "2024.09.00"
+
+#Added Package Versions
+jsonSerilizations = "1.11.0"
+ksp = "2.2.0-2.0.2"
+retrofit2 = "2.9.0"
+retrofit2Serialization = "2.12.0"
+navVersion = "2.9.8"
+hilt = "2.57.2"
+hiltNavigation = "1.3.0"
+coil = "3.0.4"
+kotlinxDateTime = "0.7.1"
+okhtpp3 = "4.11.0"
+shimmer = "1.3.3"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# Kotlinx Datetime
+org-jetbrains-kotlinx-datetime = {group="org.jetbrains.kotlinx",name="kotlinx-datetime",version.ref="kotlinxDateTime"}
+
+# Shimmer
+com-valentinilk-shimmer-compose-shimmer = {group="com.valentinilk.shimmer",name="compose-shimmer",version.ref="shimmer"}
+
+# Image Load
+io-coil-kt-coil3-coil-compose = {group="io.coil-kt.coil3",name="coil-compose",version.ref="coil"}
+io-coil-kt-coil3-coil-network-okhttp = {group="io.coil-kt.coil3",name="coil-network-okhttp",version.ref="coil"}
+
+# Viewmodel and Runtime
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-compose = {group="androidx.lifecycle", name="lifecycle-viewmodel-compose",version.ref="lifecycleRuntimeKtx"}
+
+# Navigation
+androidx-navigation = {group="androidx.navigation", name="navigation-compose", version.ref= "navVersion" }
+
+# Networks
+squareup-retrofit2-retrofit = {group="com.squareup.retrofit2", name="retrofit",version.ref="retrofit2"}
+squareup-retrofit2-converter-serialization = {group="com.squareup.retrofit2", name="converter-kotlinx-serialization",version.ref="retrofit2Serialization"}
+
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhtpp3" }
+
+# Serialization
+serialization = {group="org.jetbrains.kotlinx", name="kotlinx-serialization-json", version.ref= "jsonSerilizations" }
+
+# Dagger Hilt
+hilt-navigation-compose = {group="androidx.hilt",name="hilt-navigation-compose",version.ref="hiltNavigation"}
+hilt = {group="com.google.dagger",name="hilt-android",version.ref="hilt"}
+
+# Hilt Compiler
+hilt-compiler = {group="com.google.dagger",name="hilt-android-compiler",version.ref="hilt"}
+
+[plugins]
+# Parcelize
+kotlin-parcelize = {id="org.jetbrains.kotlin.plugin.parcelize"}
+
+# Serialize
+kotlin-serialization = {id="org.jetbrains.kotlin.plugin.serialization", version.ref="kotlin"}
+
+# Dagger Hilt
+hilt = {id="com.google.dagger.hilt.android", version.ref="hilt"}
+ksp = {id="com.google.devtools.ksp", version.ref="ksp"}
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
