@@ -1,24 +1,15 @@
 """2D cutting optimizer untuk lembaran triplek/MDF (Tahap 4).
 
-Membungkus `rectpack` (Guillotine / MaxRects) dengan hal-hal yang membuat hasilnya
-benar-benar bisa dipakai di bengkel:
+Membungkus `rectpack` (Guillotine / MaxRects) dengan yang dibutuhkan bengkel:
 
-- **Kerf**: tebal pisau (default 3 mm) ditambahkan ke setiap part sebelum di-pack,
-  lalu dipotong lagi saat pelaporan koordinat sehingga (x, y, w, h) yang keluar
-  adalah ukuran part sesungguhnya dan celah antar part = kerf. Ukuran bin sengaja
-  dibuat `usable + kerf`: potongan terakhir di tiap sumbu tidak butuh kerf di
-  dalam lembar, jadi part yang persis selebar lembaran tetap muat.
-- **Trim margin**: tepi lembaran yang dibuang lebih dulu (default 0 mm).
-- **Grain**: `rectpack` hanya punya satu flag rotasi per packer, jadi saat
-  `respect_grain=True` rotasi dimatikan untuk seluruh lembar. Part yang
-  `grain_locked=False` (panel belakang, alas laci, rail plinth) tetap boleh
-  di-swap orientasinya secara manual kalau memang tidak muat memanjang.
-  Set `respect_grain=False` untuk membiarkan optimizer memutar semua part.
-- **Pisah per tebal/material**: papan 18 mm dan 4 mm tidak boleh dicampur dalam
-  satu lembar, jadi setiap kombinasi (material, tebal) dipack terpisah.
+- Kerf: tebal pisau ditambahkan sebelum pack, dipotong lagi saat pelaporan, jadi
+  (x, y, w, h) yang keluar adalah ukuran part sesungguhnya.
+- Trim margin: tepi lembaran yang dibuang lebih dulu.
+- Grain: `respect_grain=True` mematikan rotasi seluruh lembar; part
+  `grain_locked=False` tetap boleh ditukar orientasinya secara manual.
+- Satu lembar tidak pernah mencampur material atau tebal berbeda.
 
-Output: daftar `Sheet`, masing-masing berisi penempatan part (x, y, w, h) beserta
-persentase sisa bahan (waste %).
+Output: daftar `Sheet` berisi penempatan part beserta waste %.
 """
 
 from __future__ import annotations
@@ -158,8 +149,7 @@ def nest_parts(parts: Sequence[Part], cfg: Optional[NestConfig] = None) -> NestR
     usable_l = cfg.sheet_length_mm - 2 * cfg.trim_mm
     usable_w = cfg.sheet_width_mm - 2 * cfg.trim_mm
     kerf = cfg.kerf_mm
-    # Tiap rect membawa kerf-nya sendiri; bin dilebihkan satu kerf supaya potongan
-    # terakhir di tiap sumbu tidak ikut dikenai kerf (lihat catatan di docstring).
+    # Bin dilebihkan satu kerf agar potongan terakhir tiap sumbu tidak ikut dikenai kerf.
     bin_l, bin_w = usable_l + kerf, usable_w + kerf
 
     # Kelompokkan per (material, tebal): satu lembar tidak boleh campur bahan.
@@ -218,8 +208,7 @@ def nest_parts(parts: Sequence[Part], cfg: Optional[NestConfig] = None) -> NestR
             part, piece_index = rid_map[r_id]
             # Buang kerf lagi supaya yang dilaporkan = ukuran part sesungguhnya.
             real_l, real_w = w - kerf, h - kerf
-            # Bandingkan dengan ukuran potong asli: menangkap rotasi oleh rectpack
-            # maupun penukaran orientasi manual di atas.
+            # Dibandingkan ke ukuran potong asli: menangkap rotasi rectpack & manual.
             rotated = abs(real_l - part.cut_length_mm) > 0.51   # toleransi pembulatan
             by_bin.setdefault(bin_idx, []).append(
                 Placement(
@@ -249,9 +238,7 @@ def nest_parts(parts: Sequence[Part], cfg: Optional[NestConfig] = None) -> NestR
     return NestResult(sheets=sheets, unplaced=unplaced, config=cfg)
 
 
-# --------------------------------------------------------------------------- #
 # Visualisasi: SVG mandiri (tanpa matplotlib) supaya bisa dibuka di browser
-# --------------------------------------------------------------------------- #
 
 _PALETTE = [
     "#7ba7d7", "#8fcf9a", "#e8b45f", "#d98c8c", "#b39ddb",

@@ -20,8 +20,9 @@ verify_model.py    buktikan bobot yang di-mount memang model fine-tuned
 
 ## Prasyarat
 
-Bobot hasil merge harus sudah ada - image **tidak** memuatnya, folder itu di-mount
-sebagai volume read-only:
+Bobot hasil merge harus sudah ada - image tidak memuatnya, folder itu di-mount
+sebagai volume read-only. Kalau yang kamu punya baru folder `adapter/` (152 MB,
+dikirim terpisah dari repo), langkah merge inilah yang mengubahnya jadi bobot penuh:
 
 ```bash
 uv run python "AI Services/merge_adapter.py"
@@ -174,8 +175,12 @@ uv run python deploy/smoke_test.py
 
 # terhadap container yang jalan; dengan --image ikut menguji /v1/extract & /v1/analyze
 uv run python deploy/smoke_test.py --url http://localhost:8000 --api-key ganti-ini \
-    --image "AI Services/gold_test/images/<file>.png"
+    --image <foto-sketsa>.png
 ```
+
+Gambar apa pun bisa dipakai. Untuk pengujian yang berarti, foto sketsa nyata dengan
+label manual sebaiknya dikumpulkan di `AI Services/gold_test/` - folder itu tidak
+disertakan di repo dan diisi sendiri.
 
 ## Catatan operasional
 

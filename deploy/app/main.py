@@ -40,9 +40,7 @@ def _warmup() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Model dimuat di startup, bukan saat request pertama: kalau bobotnya hilang
-    # atau korup, lebih baik ketahuan sekarang lewat /ready daripada nanti
-    # sebagai request user yang gagal.
+    # Di startup, bukan saat request pertama: bobot rusak ketahuan lewat /ready.
     try:
         await run_in_threadpool(vlm.load)
         if settings.warmup:
@@ -77,9 +75,7 @@ async def require_api_key(x_api_key: Optional[str] = Header(None, alias="X-API-K
             "error": "unauthorized", "message": "Header X-API-Key salah atau tidak ada."})
 
 
-# --------------------------------------------------------------------------- #
 # Util
-# --------------------------------------------------------------------------- #
 
 async def read_image(upload: UploadFile) -> Image.Image:
     data = await upload.read()
@@ -92,9 +88,7 @@ async def read_image(upload: UploadFile) -> Image.Image:
                        f"{settings.max_upload_bytes / 1e6:.0f} MB."})
     try:
         img = Image.open(io.BytesIO(data))
-        # Foto dari HP menyimpan orientasi di EXIF, bukan di piksel. Tanpa ini
-        # sketsa yang di layar terlihat tegak masuk ke model dalam keadaan miring
-        # 90 derajat, dan angka-angka dimensinya jadi tidak terbaca.
+        # Foto HP menyimpan orientasi di EXIF: tanpa ini sketsa masuk miring 90 derajat.
         img = ImageOps.exif_transpose(img)
         return img.convert("RGB")
     except (UnidentifiedImageError, OSError) as exc:
@@ -110,9 +104,7 @@ def parse_options(raw: Optional[str], model):
     try:
         return model.model_validate(json.loads(raw))
     except (json.JSONDecodeError, ValidationError) as exc:
-        # Penyebab nomor satu di sini bukan klien yang salah tulis JSON, melainkan
-        # Swagger UI: kolom form opsional diisi placeholder harfiah "string" dan
-        # ikut terkirim. Pesannya menyebut itu supaya tidak perlu ditebak.
+        # Penyebab tersering: Swagger UI mengirim placeholder harfiah "string".
         hint = ""
         if raw.strip() == "string":
             hint = (" Nilai yang terkirim adalah kata 'string' - itu placeholder "
@@ -128,9 +120,7 @@ def parse_spec_or_422(raw: str):
     try:
         return parse_model_output(raw)
     except (json.JSONDecodeError, ValueError, ValidationError) as exc:
-        # 422, bukan 500: ini bukan service yang rusak, tapi model yang gagal
-        # membaca gambar. Frontend harus meminta user memfoto ulang, dan
-        # raw_output disertakan supaya bisa di-log untuk perbaikan dataset.
+        # 422, bukan 500: service sehat, model yang gagal membaca gambar.
         raise HTTPException(422, {
             "error": "model_output_invalid",
             "message": "Model tidak menghasilkan JSON yang sesuai skema. "
@@ -174,9 +164,7 @@ def ensure_model_ready() -> None:
             "detail": vlm.load_error or "sedang dimuat"})
 
 
-# --------------------------------------------------------------------------- #
 # Kesehatan dan metadata
-# --------------------------------------------------------------------------- #
 
 @app.get("/health", tags=["ops"])
 def health():
@@ -190,8 +178,7 @@ def ready():
     if not vlm.ready:
         return JSONResponse(status_code=503, content={
             "status": "loading", "model_dir": str(vlm.model_dir), "error": vlm.load_error})
-    # merge_info disertakan supaya "model mana yang sedang disajikan" bisa dijawab
-    # lewat satu request, tanpa masuk ke container.
+    # merge_info: "model mana yang disajikan" terjawab tanpa masuk ke container.
     return {"status": "ready", "model_dir": str(vlm.model_dir),
             "load_4bit": settings.load_4bit, "model": vlm.merge_info}
 
@@ -211,9 +198,7 @@ def config():
     return payload
 
 
-# --------------------------------------------------------------------------- #
 # Pipeline
-# --------------------------------------------------------------------------- #
 
 @app.post("/v1/extract", response_model=ExtractResponse, tags=["pipeline"],
           dependencies=[Depends(require_api_key)])

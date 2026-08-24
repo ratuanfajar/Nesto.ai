@@ -1,27 +1,16 @@
 """Evaluasi & inference pipeline untuk model VL hasil fine-tune (Tahap 2).
 
-Dua mode pakai:
+    # generate + skor (butuh GPU)
+    python evaluate.py --adapter outputs/qwen2vl-2b-nesto-lora/adapter --limit 100
 
-1. **Generate + skor** (butuh GPU):
-       python evaluate.py --adapter outputs/qwen2vl-2b-nesto-lora/adapter --limit 100
-2. **Skor prediksi yang sudah tersimpan** (tanpa GPU, cepat, bisa diulang):
-       python evaluate.py --predictions outputs/preds.jsonl
+    # skor ulang prediksi tersimpan (tanpa GPU)
+    python evaluate.py --predictions outputs/preds.jsonl
 
-Metrik yang dilaporkan
-----------------------
-- **Schema Validity Rate**: % output yang lolos `json.loads` + validasi Pydantic
-  (target > 98%), lengkap dengan jumlah error dipecah per jenis: JSON rusak,
-  field hilang, tipe salah, output kosong.
-- **Per-field numerik**: MAE, MedAE, RMSE, error maksimum, jumlah sampel yang
-  melewati toleransi (+-0.5 cm dan +-1.0 cm) beserta akurasinya.
-- **Per-field kategorikal/boolean**: jumlah benar vs salah + pasangan kesalahan
-  yang paling sering muncul.
-- **Count fields** (shelves/doors/drawers): distribusi selisih (off-by-N).
-- **drop_pocket**: TP/FP/FN + precision/recall untuk deteksi ada/tidaknya.
-- **Breakdown** per `furniture_type` dan per `layout`.
-- **Dampak hilir**: selisih jumlah part BOM dan jumlah lembar triplek antara
-  prediksi vs ground truth - ini yang benar-benar terasa di bengkel.
-- **Daftar sampel terburuk** untuk diperiksa manual.
+Melaporkan schema validity rate, metrik numerik per field (MAE/MedAE/RMSE dan
+akurasi pada toleransi +-0.5 / +-1.0 cm), akurasi kategorikal dan count,
+precision/recall drop pocket, breakdown per furniture_type dan layout, dampak
+hilir ke jumlah part serta lembar triplek, dan daftar sampel terburuk.
+Rincian tiap metrik ada di README bagian "Metrik Tahap 2".
 """
 
 from __future__ import annotations
@@ -50,9 +39,7 @@ DEFAULT_PROMPT = (
     "from this technical sketch into strict JSON."
 )
 
-# Toleransi yang dianggap "masih bisa dipakai tukang".
-# Field berakhiran _mm (tebal papan, edging) dinilai dalam mm, bukan cm -- memakai
-# ambang 0.5 cm untuk field milimeter membuat angkanya tidak ada artinya.
+# Toleransi "masih bisa dipakai tukang". Field _mm dinilai dalam mm, bukan cm.
 TOLERANCES_CM = (0.5, 1.0)
 TOLERANCES_MM = (1.0, 2.0)
 
@@ -95,9 +82,7 @@ CATEGORICAL_FIELDS = [
 ]
 
 
-# --------------------------------------------------------------------------- #
 # Util
-# --------------------------------------------------------------------------- #
 
 def _get(obj: Any, path: str) -> Any:
     """Ambil nilai lewat dot-path; None kalau salah satu ruas kosong."""
@@ -122,9 +107,7 @@ def _classify_validation_error(err: ValidationError) -> List[Tuple[str, str]]:
     return out
 
 
-# --------------------------------------------------------------------------- #
 # Struktur hasil
-# --------------------------------------------------------------------------- #
 
 @dataclass
 class ParseOutcome:
@@ -178,9 +161,7 @@ class EvalReport:
         }
 
 
-# --------------------------------------------------------------------------- #
 # 1. Parsing + schema validity
-# --------------------------------------------------------------------------- #
 
 def parse_prediction(sample_id: str, raw: str) -> ParseOutcome:
     """Coba ubah teks mentah model jadi dict tervalidasi; catat jenis errornya."""
@@ -203,9 +184,7 @@ def parse_prediction(sample_id: str, raw: str) -> ParseOutcome:
                             error_detail=str(e)[:200])
 
 
-# --------------------------------------------------------------------------- #
 # 2. Metrik numerik / count / kategorikal
-# --------------------------------------------------------------------------- #
 
 def _numeric_stats(errors: List[float], n_missing: int, n_extra: int,
                    tolerances: Tuple[float, ...] = TOLERANCES_CM,
@@ -324,9 +303,7 @@ def _score_drop_pocket(pairs: List[Tuple[dict, dict]]) -> Dict[str, float]:
     }
 
 
-# --------------------------------------------------------------------------- #
 # 3. Dampak hilir: BOM & nesting
-# --------------------------------------------------------------------------- #
 
 def _bom_signature(data: dict, nest: bool) -> Optional[dict]:
     try:
@@ -416,9 +393,7 @@ def _score_downstream(pairs: List[Tuple[dict, dict]], nest: bool) -> Dict[str, A
     }
 
 
-# --------------------------------------------------------------------------- #
 # 4. Skoring utama
-# --------------------------------------------------------------------------- #
 
 def _sample_error_score(pred: dict, ref: dict) -> float:
     """Skor gabungan untuk mengurutkan sampel terburuk (cm + penalti kategorikal)."""
@@ -521,9 +496,7 @@ def evaluate(
     return report
 
 
-# --------------------------------------------------------------------------- #
 # 5. Laporan teks
-# --------------------------------------------------------------------------- #
 
 def format_report(report: EvalReport) -> str:
     L: List[str] = []
@@ -659,9 +632,7 @@ def format_report(report: EvalReport) -> str:
     return "\n".join(L)
 
 
-# --------------------------------------------------------------------------- #
 # 6. I/O dataset & inference
-# --------------------------------------------------------------------------- #
 
 def load_jsonl(path: Path) -> List[dict]:
     rows = []
@@ -706,8 +677,7 @@ def load_eval_set(
 
     n_missing = len(rows) - len(references)
     if n_missing:
-        # Sampel tanpa ground truth tidak ikut dihitung di `evaluate()`; kalau tidak
-        # diberitahu, denominator metrik diam-diam mengecil dan angkanya menyesatkan.
+        # Tanpa ground truth sampel tidak ikut dihitung; diam-diam mengecilkan denominator.
         print(f"PERINGATAN: {n_missing} dari {len(rows)} sampel tidak punya ground truth "
               f"yang bisa dibaca dan tidak akan ikut diskor.")
     return rows, references, meta
@@ -829,9 +799,7 @@ def load_predictions(path: Path) -> Dict[str, str]:
     return {r["id"]: r.get("raw", "") for r in load_jsonl(path)}
 
 
-# --------------------------------------------------------------------------- #
 # 7. Gold test: foto sketsa nyata dari bengkel
-# --------------------------------------------------------------------------- #
 
 def gold_test(
     image_dir: Path,
@@ -866,9 +834,7 @@ def gold_test(
     return preds, (evaluate(preds, refs) if refs else None)
 
 
-# --------------------------------------------------------------------------- #
 # CLI
-# --------------------------------------------------------------------------- #
 
 def _cli() -> None:
     base = Path(__file__).resolve().parent
@@ -887,9 +853,8 @@ def _cli() -> None:
     ap.add_argument("--limit", type=int, default=None, help="batasi jumlah sampel")
     ap.add_argument("--batch-size", type=int, default=1)
     ap.add_argument("--max-new-tokens", type=int, default=320)
-    # WAJIB sama dengan MIN/MAX_PIXELS di finetune_qlora.ipynb. Kalau evaluasi
-    # memakai resolusi lebih rendah dari training, model membaca angka pada sketsa
-    # dengan detail yang berbeda dan skornya jadi lebih buruk tanpa sebab.
+    # Wajib sama dengan MIN/MAX_PIXELS di finetune_qlora.ipynb: resolusi beda = skor
+    # lebih buruk tanpa sebab.
     ap.add_argument("--min-pixels", type=int, default=256 * 28 * 28)
     ap.add_argument("--max-pixels", type=int, default=1024 * 28 * 28)
     ap.add_argument("--no-downstream", action="store_true",

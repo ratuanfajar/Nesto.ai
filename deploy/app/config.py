@@ -1,11 +1,8 @@
 """Konfigurasi service, seluruhnya dari environment variable.
 
-Tidak ada satu pun angka model di sini yang di-hardcode ulang dari notebook.
-Batas resolusi gambar (min/max pixels) sengaja TIDAK ada sebagai setting:
-nilainya sudah tersimpan di `processor_config.json` dalam folder model hasil
-merge, dan itulah satu-satunya sumber yang benar. Menyediakan env var untuk itu
-berarti membuka jalan agar service membaca gambar pada resolusi berbeda dari
-saat training - akurasi turun tanpa error apa pun.
+Batas resolusi gambar sengaja tidak ada di sini: nilainya tersimpan di
+`processor_config.json` folder model hasil merge, dan itu satu-satunya sumber
+yang identik dengan saat training.
 """
 
 from __future__ import annotations
@@ -37,36 +34,26 @@ def _env_list(name: str, default: List[str]) -> List[str]:
 
 @dataclass
 class Settings:
-    # Folder hasil `merge_adapter.py`. Di-mount sebagai volume, TIDAK ikut ke
-    # dalam image: 4.4 GB bobot di image berarti setiap rebuild kode menyalin
-    # ulang bobotnya dan registry-nya membengkak.
+    # Hasil merge_adapter.py, di-mount sebagai volume - 4.4 GB bobot tidak ikut ke image.
     model_dir: Path = field(default_factory=lambda: Path(
         os.getenv("NESTO_MODEL_DIR", "/models/merged")))
 
-    # Muat model dalam 4-bit (~2.5 GB VRAM) atau bf16 penuh (~5 GB VRAM).
-    # bf16 lebih cepat dan tanpa dependensi bitsandbytes; pakai 4-bit kalau
-    # GPU dipakai bersama service lain.
+    # 4-bit ~2.5 GB VRAM, bf16 ~5 GB tapi lebih cepat dan tanpa bitsandbytes.
     load_4bit: bool = field(default_factory=lambda: _env_bool("NESTO_LOAD_4BIT", False))
 
-    # Menolak start kalau folder model bukan hasil merge_adapter.py. Folder base
-    # model dan folder merged isinya nyaris identik: salah mount berarti service
-    # menyajikan Qwen2-VL mentah - ter-load tanpa error, tapi tidak pernah
-    # menghasilkan JSON sesuai skema. Lebih baik gagal keras saat startup.
-    # Set false HANYA kalau kamu sengaja menyajikan bobot dari sumber lain.
+    # Tolak start kalau folder model bukan hasil merge: salah mount = Qwen2-VL mentah.
     require_finetuned: bool = field(
         default_factory=lambda: _env_bool("NESTO_REQUIRE_FINETUNED", True))
+
     device: str = field(default_factory=lambda: os.getenv("NESTO_DEVICE", "cuda"))
 
     max_new_tokens: int = field(default_factory=lambda: _env_int("NESTO_MAX_NEW_TOKENS", 320))
 
-    # Satu GPU = satu inference pada satu waktu. Request ke-2 menunggu di
-    # semaphore, bukan bertabrakan jadi CUDA OOM. Naikkan hanya kalau VRAM lega
-    # dan kamu sudah mengukur bahwa batch bersamaan memang lebih cepat.
+    # Satu GPU = satu inference. Request berikutnya antre di semaphore, bukan CUDA OOM.
     max_concurrent_inference: int = field(
         default_factory=lambda: _env_int("NESTO_MAX_CONCURRENCY", 1))
 
-    # Panggil model sekali saat startup supaya request pertama dari user tidak
-    # menanggung biaya kompilasi kernel CUDA (~10-20 detik).
+    # Satu generate saat startup, agar request pertama tidak menanggung kompilasi CUDA.
     warmup: bool = field(default_factory=lambda: _env_bool("NESTO_WARMUP", True))
 
     max_upload_bytes: int = field(
@@ -75,8 +62,7 @@ class Settings:
     cors_origins: List[str] = field(
         default_factory=lambda: _env_list("NESTO_CORS_ORIGINS", ["http://localhost:3000"]))
 
-    # Kalau di-set, semua endpoint /v1/* butuh header `X-API-Key`. Kosong = terbuka
-    # (hanya aman kalau service tidak terekspos ke luar jaringan internal).
+    # Kalau diisi, semua endpoint /v1/* butuh header X-API-Key.
     api_key: str = field(default_factory=lambda: os.getenv("NESTO_API_KEY", ""))
 
 

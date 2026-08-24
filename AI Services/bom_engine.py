@@ -1,22 +1,13 @@
-"""Rule-engine BOM: dekomposisi dimensi global -> daftar part lembaran (Tahap 3).
+"""Rule-engine BOM: dimensi global -> daftar part lembaran, dalam mm (Tahap 3).
 
-Deterministik penuh: tidak ada model, tidak ada randomness. Input adalah
-`FurnitureBOMData` (hasil ekstraksi model VL yang sudah lolos validasi skema),
-output adalah daftar `Part` siap dipotong dalam satuan **milimeter**.
+Deterministik: tidak ada model, tidak ada randomness. Masuk `FurnitureBOMData`,
+keluar daftar `Part` siap potong.
 
-Konvensi ukuran
----------------
-- `length_mm` = sisi yang searah serat (grain) papan, digambar horizontal.
-- `width_mm`  = sisi tegak lurus serat.
-- `eb` = edge banding pada 4 sisi dengan urutan **[top, right, bottom, left]**.
-  Sisi top/bottom sepanjang `length_mm`, sisi left/right sepanjang `width_mm`.
-- `length_mm`/`width_mm` adalah **ukuran jadi** (setelah edging menempel);
-  `cut_length_mm`/`cut_width_mm` adalah ukuran potong setelah dikurangi tebal edging.
+Konvensi: `length_mm` searah serat, `width_mm` tegak lurus serat, `eb` = edge
+banding [top, right, bottom, left]. `length_mm`/`width_mm` adalah ukuran jadi;
+`cut_*` adalah ukuran potong setelah dikurangi tebal edging.
 
-Logika pengurangan sambungan (carcass "top & bottom menjepit samping"):
-    tinggi dinding samping = tinggi total - tebal top - tebal bottom - tinggi plinth
-    lebar ambalan          = panjang total - 2 x tebal samping
-    ukuran potong          = ukuran jadi - tebal edging per sisi yang di-edging
+Rumus sambungan carcass ada di README bagian "Asumsi konstruksi".
 """
 
 from __future__ import annotations
@@ -45,9 +36,7 @@ class BOMConfig:
     drawer_bottom_thickness_mm: int = 9
     edging_on_hidden_edges: bool = False  # True = semua tepi di-edging
 
-    # Panel yang lebih besar dari satu lembar tidak bisa dipotong utuh; di bengkel
-    # panel belakang memang disambung. Nilai ini harus sama dengan ukuran lembaran
-    # di `nesting_engine.NestConfig`, kalau tidak part-nya akan jatuh ke `unplaced`.
+    # Harus sama dengan ukuran lembaran di NestConfig, kalau tidak part jatuh ke unplaced.
     max_panel_length_mm: int = 2440
     max_panel_width_mm: int = 1220
     door_min_height_mm: float = 120.0     # jatah minimum area pintu saat ada laci
@@ -154,8 +143,7 @@ def build_bom(data: FurnitureBOMData, cfg: Optional[BOMConfig] = None) -> List[P
     """Terjemahkan spesifikasi global menjadi daftar part lembaran."""
     cfg = cfg or BOMConfig()
 
-    # `material.board_thickness_mm` adalah tebal papan yang benar-benar tertulis di
-    # sketsa; `default_thickness_mm` hanya cadangan kalau sketsa tidak menyebutkannya.
+    # board_thickness_mm = yang tertulis di sketsa; default_thickness_mm hanya cadangan.
     t = float(data.material.board_thickness_mm or data.default_thickness_mm)
     edging = float(data.default_edging_mm)
     mat = f"{data.material.board_material} {int(t)}mm"
@@ -216,8 +204,7 @@ def build_bom(data: FurnitureBOMData, cfg: Optional[BOMConfig] = None) -> List[P
     drawer_zone = 0.0
 
     if n_drawer > 0:
-        # Sisakan jatah untuk area pintu dulu, kalau tidak muka laci bisa memakan
-        # seluruh tinggi muka sehingga pintu jadi bertinggi <= 0 dan hilang diam-diam.
+        # Jatah pintu disisakan dulu, kalau tidak pintu bertinggi <= 0 dan hilang.
         avail = front_h - (n_drawer + 1) * gap
         if n_door > 0:
             avail -= cfg.door_min_height_mm + gap

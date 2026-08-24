@@ -161,9 +161,8 @@ def sample_furniture_parameters() -> FurnitureBOMData:
 ISO_ANGLE = np.radians(30)
 _COS, _SIN = np.cos(ISO_ANGLE), np.sin(ISO_ANGLE)
 
-# Format angka dimensi PADA GAMBAR (label visual). Diacak per-sampel antara
-# titik "60.0" dan koma "60,0" agar model robust terhadap kedua konvensi.
-# Catatan: JSON ground truth tetap float standar (titik) -> tak terpengaruh.
+# Format angka pada GAMBAR, diacak titik/koma agar model robust. JSON ground truth
+# tetap memakai titik.
 _STYLE = {"comma": False}
 
 # Koordinat teks header (axes fraction) — dipakai sama di kedua layout.
@@ -279,8 +278,7 @@ def _draw_partitions(ax, data, L, W, H):
     door_top = draw_bot if n_draw > 0 else region_top
 
     grey = '#475569'
-    # Rak internal digambar sbg hidden-line (garis putus-putus) -> konvensi CAD.
-    # Selalu tampak agar shelves_count bisa dihitung dari gambar (opsi 1).
+    # Hidden-line (konvensi CAD), selalu tampak agar shelves_count terhitung dari gambar.
     if n_shelf > 0:
         for i in range(1, n_shelf + 1):
             v = region_bot + (door_top - region_bot) * i / (n_shelf + 1)
@@ -452,9 +450,7 @@ def render_furniture_sketch(data: FurnitureBOMData, save_path: str):
     plt.close()
 
 
-# -------------------------------------------------------------
 # 3b. RENDERING MULTI-VIEW 2D ORTOGRAFIK (TAMPAK DEPAN / SAMPING)
-# -------------------------------------------------------------
 FRAME, GREY, DIMC, WITC = '#1e293b', '#475569', '#1f2937', '#94a3b8'
 
 def _panel_rect(ax, ox, oy, w, h, **kw):
@@ -565,8 +561,7 @@ def render_multiview_2d(data: FurnitureBOMData, save_path: str):
     _witness(ax, (fx, fy), (fx - dbandx, fy)); _witness(ax, (fx, fy + H), (fx - dbandx, fy + H))
     _dim_line(ax, (fx - dbandx * 0.7, fy), (fx - dbandx * 0.7, fy + H), f"{fmt(H)} cm",
               rot=90, label_off=(-L * 0.04, 0))
-    # tinggi tiap kompartemen (mirip gambar bengkel) utk unit terbuka.
-    # Dibatasi <=3 rak agar label tidak saling tumpang tindih pd unit padat.
+    # Tinggi tiap kompartemen; dibatasi <=3 rak agar label tidak tumpang tindih.
     if data.partitions.doors_count == 0 and 1 <= data.partitions.shelves_count <= 3:
         ns = data.partitions.shelves_count
         ys = [fy + base] + [fy + base + (H - base) * i / (ns + 1) for i in range(1, ns + 1)] + [fy + H]
@@ -683,9 +678,7 @@ def render_furniture(data: FurnitureBOMData, save_path: str, iso_ratio: float = 
     return "multiview_2d"
 
 
-# -------------------------------------------------------------
 # 4. AUGMENTASI VISUAL (NOISE & TEXTURE)
-# -------------------------------------------------------------
 def apply_realistic_paper_effects(img_path: str):
     img = Image.open(img_path).convert('RGB')
 

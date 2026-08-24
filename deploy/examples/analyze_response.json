@@ -1,0 +1,312 @@
+{
+  "spec": {
+    "furniture_type": "reception_desk",
+    "overall_dimensions": {
+      "length_cm": 178.7,
+      "width_cm": 54.7,
+      "height_cm": 90.2
+    },
+    "plinth": {
+      "has_plinth": true,
+      "height_cm": 8.5,
+      "offset_cm": 4.6
+    },
+    "partitions": {
+      "shelves_count": 0,
+      "doors_count": 0,
+      "drawers_count": 0
+    },
+    "material": {
+      "board_material": "MDF",
+      "board_thickness_mm": 12,
+      "finish": "Duco",
+      "finish_color": null,
+      "finish_code": null
+    },
+    "drop_pocket": null,
+    "has_curve": true,
+    "default_thickness_mm": 18,
+    "default_edging_mm": 1.0
+  },
+  "parts": [
+    {
+      "part_name": "Side Panel",
+      "length_mm": 793,
+      "width_mm": 547,
+      "thickness_mm": 12,
+      "qty": 2,
+      "eb": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "material": "MDF 12mm",
+      "grain_locked": true,
+      "notes": "tepi depan di-edging",
+      "cut_length_mm": 792,
+      "cut_width_mm": 547
+    },
+    {
+      "part_name": "Top Panel",
+      "length_mm": 1787,
+      "width_mm": 547,
+      "thickness_mm": 12,
+      "qty": 1,
+      "eb": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "material": "MDF 12mm",
+      "grain_locked": true,
+      "notes": "tepi depan di-edging",
+      "cut_length_mm": 1787,
+      "cut_width_mm": 546
+    },
+    {
+      "part_name": "Bottom Panel",
+      "length_mm": 1787,
+      "width_mm": 547,
+      "thickness_mm": 12,
+      "qty": 1,
+      "eb": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "material": "MDF 12mm",
+      "grain_locked": true,
+      "notes": "tepi depan di-edging",
+      "cut_length_mm": 1787,
+      "cut_width_mm": 546
+    },
+    {
+      "part_name": "Back Panel",
+      "length_mm": 1787,
+      "width_mm": 817,
+      "thickness_mm": 4,
+      "qty": 1,
+      "eb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "material": "Plywood 4mm",
+      "grain_locked": false,
+      "notes": "dipaku/overlay di belakang carcass",
+      "cut_length_mm": 1787,
+      "cut_width_mm": 817
+    },
+    {
+      "part_name": "Plinth Side Rail",
+      "length_mm": 501,
+      "width_mm": 85,
+      "thickness_mm": 12,
+      "qty": 2,
+      "eb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "material": "MDF 12mm",
+      "grain_locked": false,
+      "notes": "",
+      "cut_length_mm": 501,
+      "cut_width_mm": 85
+    },
+    {
+      "part_name": "Plinth Front/Back Rail",
+      "length_mm": 1763,
+      "width_mm": 85,
+      "thickness_mm": 12,
+      "qty": 2,
+      "eb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "material": "MDF 12mm",
+      "grain_locked": false,
+      "notes": "rail depan mundur 46 mm dari muka",
+      "cut_length_mm": 1763,
+      "cut_width_mm": 85
+    }
+  ],
+  "bom_summary": {
+    "part_types": 6,
+    "total_pieces": 9,
+    "area_m2_by_thickness": {
+      "4": 1.46,
+      "12": 3.207
+    },
+    "edging_length_m": 4.67
+  },
+  "nesting": {
+    "summary": {
+      "sheets_used": 4,
+      "sheets_per_material": {
+        "MDF 12mm (12mm)": 3,
+        "Plywood 4mm (4mm)": 1
+      },
+      "total_waste_pct": 60.84,
+      "per_sheet_waste_pct": [
+        26.55,
+        70.89,
+        94.97,
+        50.95
+      ],
+      "pieces_placed": 9,
+      "pieces_unplaced": 0,
+      "unplaced": []
+    },
+    "sheets": [
+      {
+        "index": 1,
+        "material": "MDF 12mm",
+        "thickness_mm": 12,
+        "sheet_length_mm": 2440,
+        "sheet_width_mm": 1220,
+        "placements": [
+          {
+            "part_name": "Top Panel",
+            "x_mm": 0.0,
+            "y_mm": 0.0,
+            "length_mm": 1787.0,
+            "width_mm": 546.0,
+            "rotated": false,
+            "piece_index": 1
+          },
+          {
+            "part_name": "Plinth Side Rail",
+            "x_mm": 1790.0,
+            "y_mm": 0.0,
+            "length_mm": 501.0,
+            "width_mm": 85.0,
+            "rotated": false,
+            "piece_index": 1
+          },
+          {
+            "part_name": "Plinth Side Rail",
+            "x_mm": 1790.0,
+            "y_mm": 88.0,
+            "length_mm": 501.0,
+            "width_mm": 85.0,
+            "rotated": false,
+            "piece_index": 2
+          },
+          {
+            "part_name": "Bottom Panel",
+            "x_mm": 0.0,
+            "y_mm": 549.0,
+            "length_mm": 1787.0,
+            "width_mm": 546.0,
+            "rotated": false,
+            "piece_index": 1
+          },
+          {
+            "part_name": "Plinth Front/Back Rail",
+            "x_mm": 0.0,
+            "y_mm": 1098.0,
+            "length_mm": 1763.0,
+            "width_mm": 85.0,
+            "rotated": false,
+            "piece_index": 1
+          }
+        ],
+        "utilization_pct": 73.45,
+        "waste_pct": 26.55
+      },
+      {
+        "index": 2,
+        "material": "MDF 12mm",
+        "thickness_mm": 12,
+        "sheet_length_mm": 2440,
+        "sheet_width_mm": 1220,
+        "placements": [
+          {
+            "part_name": "Side Panel",
+            "x_mm": 0.0,
+            "y_mm": 0.0,
+            "length_mm": 792.0,
+            "width_mm": 547.0,
+            "rotated": false,
+            "piece_index": 1
+          },
+          {
+            "part_name": "Side Panel",
+            "x_mm": 0.0,
+            "y_mm": 550.0,
+            "length_mm": 792.0,
+            "width_mm": 547.0,
+            "rotated": false,
+            "piece_index": 2
+          }
+        ],
+        "utilization_pct": 29.11,
+        "waste_pct": 70.89
+      },
+      {
+        "index": 3,
+        "material": "MDF 12mm",
+        "thickness_mm": 12,
+        "sheet_length_mm": 2440,
+        "sheet_width_mm": 1220,
+        "placements": [
+          {
+            "part_name": "Plinth Front/Back Rail",
+            "x_mm": 0.0,
+            "y_mm": 0.0,
+            "length_mm": 1763.0,
+            "width_mm": 85.0,
+            "rotated": false,
+            "piece_index": 2
+          }
+        ],
+        "utilization_pct": 5.03,
+        "waste_pct": 94.97
+      },
+      {
+        "index": 4,
+        "material": "Plywood 4mm",
+        "thickness_mm": 4,
+        "sheet_length_mm": 2440,
+        "sheet_width_mm": 1220,
+        "placements": [
+          {
+            "part_name": "Back Panel",
+            "x_mm": 0.0,
+            "y_mm": 0.0,
+            "length_mm": 1787.0,
+            "width_mm": 817.0,
+            "rotated": false,
+            "piece_index": 1
+          }
+        ],
+        "utilization_pct": 49.05,
+        "waste_pct": 50.95
+      }
+    ],
+    "config": {
+      "sheet_length_mm": 2440,
+      "sheet_width_mm": 1220,
+      "kerf_mm": 3.0,
+      "trim_mm": 0.0,
+      "algorithm": "guillotine",
+      "respect_grain": true
+    },
+    "svg": null
+  },
+  "raw_output": "{\"furniture_type\":\"reception_desk\",\"overall_dimensions\":{\"length_cm\":178.7,\"width_cm\":54.7,\"height_cm\":90.2},\"plinth\":{\"has_plinth\":true,\"height_cm\":8.5,\"offset_cm\":4.6},\"partitions\":{\"shelves_count\":0,\"doors_count\":0,\"drawers_count\":0},\"material\":{\"board_material\":\"MDF\",\"board_thickness_mm\":12,\"finish\":\"Duco\",\"finish_color\":null,\"finish_code\":null},\"drop_pocket\":null,\"has_curve\":true,\"default_thickness_mm\":18,\"default_edging_mm\":1.0}",
+  "timings": {
+    "inference": 8.566,
+    "bom": 0.0003,
+    "nesting": 0.0013,
+    "total": 9.337
+  }
+}
