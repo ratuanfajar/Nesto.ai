@@ -1,0 +1,480 @@
+{
+  "n_total": 300,
+  "n_valid": 300,
+  "n_invalid": 0,
+  "schema_validity_rate_pct": 100.0,
+  "parse_errors": {},
+  "field_error_counter": {},
+  "numeric": {
+    "overall_dimensions.length_cm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 300,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "overall_dimensions.width_cm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 300,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "overall_dimensions.height_cm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 300,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "plinth.height_cm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 300,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "plinth.offset_cm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0043,
+      "medae": 0.0,
+      "rmse": 0.0451,
+      "max_err": 0.6,
+      "bias": -0.0043,
+      "n_exact": 297,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 299,
+          "n_error": 1,
+          "accuracy_pct": 99.67
+        },
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "drop_pocket.length_cm": {
+      "n": 72,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 72,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 72,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-1.0": {
+          "n_within": 72,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "drop_pocket.depth_cm": {
+      "n": 72,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 72,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 72,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-1.0": {
+          "n_within": 72,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "drop_pocket.height_cm": {
+      "n": 72,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 72,
+      "unit": "cm",
+      "tolerance": {
+        "+-0.5": {
+          "n_within": 72,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-1.0": {
+          "n_within": 72,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "material.board_thickness_mm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 300,
+      "unit": "mm",
+      "tolerance": {
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-2.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "default_thickness_mm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 300,
+      "unit": "mm",
+      "tolerance": {
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-2.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    },
+    "default_edging_mm": {
+      "n": 300,
+      "n_pred_missing": 0,
+      "n_pred_extra": 0,
+      "mae": 0.0,
+      "medae": 0.0,
+      "rmse": 0.0,
+      "max_err": 0.0,
+      "bias": 0.0,
+      "n_exact": 300,
+      "unit": "mm",
+      "tolerance": {
+        "+-1.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        },
+        "+-2.0": {
+          "n_within": 300,
+          "n_error": 0,
+          "accuracy_pct": 100.0
+        }
+      }
+    }
+  },
+  "counts": {
+    "partitions.shelves_count": {
+      "n": 300,
+      "n_correct": 268,
+      "n_error": 32,
+      "exact_match_pct": 89.33,
+      "mae": 0.1067,
+      "off_by": {
+        "-1": 16,
+        "0": 268,
+        "1": 16
+      }
+    },
+    "partitions.doors_count": {
+      "n": 300,
+      "n_correct": 299,
+      "n_error": 1,
+      "exact_match_pct": 99.67,
+      "mae": 0.0033,
+      "off_by": {
+        "-1": 1,
+        "0": 299
+      }
+    },
+    "partitions.drawers_count": {
+      "n": 300,
+      "n_correct": 297,
+      "n_error": 3,
+      "exact_match_pct": 99.0,
+      "mae": 0.01,
+      "off_by": {
+        "-1": 1,
+        "0": 297,
+        "1": 2
+      }
+    }
+  },
+  "categorical": {
+    "furniture_type": {
+      "n": 300,
+      "n_correct": 300,
+      "n_error": 0,
+      "accuracy_pct": 100.0,
+      "top_confusions": {}
+    },
+    "plinth.has_plinth": {
+      "n": 300,
+      "n_correct": 300,
+      "n_error": 0,
+      "accuracy_pct": 100.0,
+      "top_confusions": {}
+    },
+    "has_curve": {
+      "n": 300,
+      "n_correct": 300,
+      "n_error": 0,
+      "accuracy_pct": 100.0,
+      "top_confusions": {}
+    },
+    "material.board_material": {
+      "n": 300,
+      "n_correct": 300,
+      "n_error": 0,
+      "accuracy_pct": 100.0,
+      "top_confusions": {}
+    },
+    "material.finish": {
+      "n": 300,
+      "n_correct": 300,
+      "n_error": 0,
+      "accuracy_pct": 100.0,
+      "top_confusions": {}
+    },
+    "material.finish_color": {
+      "n": 300,
+      "n_correct": 300,
+      "n_error": 0,
+      "accuracy_pct": 100.0,
+      "top_confusions": {}
+    },
+    "material.finish_code": {
+      "n": 300,
+      "n_correct": 300,
+      "n_error": 0,
+      "accuracy_pct": 100.0,
+      "top_confusions": {}
+    }
+  },
+  "drop_pocket": {
+    "tp": 72,
+    "fp": 0,
+    "fn": 0,
+    "tn": 228,
+    "n_error": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "by_group": {
+    "furniture_type": {
+      "base_cabinet": {
+        "n": 88,
+        "dim_mae_cm": 0.0,
+        "count_errors": 11,
+        "type_accuracy_pct": 100.0
+      },
+      "bookshelf": {
+        "n": 81,
+        "dim_mae_cm": 0.0,
+        "count_errors": 14,
+        "type_accuracy_pct": 100.0
+      },
+      "nightstand": {
+        "n": 31,
+        "dim_mae_cm": 0.0,
+        "count_errors": 0,
+        "type_accuracy_pct": 100.0
+      },
+      "reception_desk": {
+        "n": 100,
+        "dim_mae_cm": 0.0,
+        "count_errors": 11,
+        "type_accuracy_pct": 100.0
+      }
+    },
+    "layout": {
+      "isometric": {
+        "n": 159,
+        "dim_mae_cm": 0.0,
+        "count_errors": 32,
+        "type_accuracy_pct": 100.0
+      },
+      "multiview_2d": {
+        "n": 141,
+        "dim_mae_cm": 0.0,
+        "count_errors": 4,
+        "type_accuracy_pct": 100.0
+      }
+    }
+  },
+  "downstream": {
+    "n": 300,
+    "partlist_identical": 261,
+    "partlist_identical_pct": 87.0,
+    "piece_count_mae": 0.17,
+    "piece_count_error_samples": 36,
+    "part_dim_mae_mm": 0.147,
+    "part_dim_error_gt_2mm": 7,
+    "part_dim_checked": 5324,
+    "sheet_count_mae": 0.053,
+    "sheet_count_error_samples": 16,
+    "unplaced_samples": 0,
+    "missing_parts_top": {
+      "Shelf": 2,
+      "Drawer Front": 1,
+      "Drawer Box Front/Back": 1,
+      "Drawer Bottom": 1,
+      "Drawer Box Side": 1
+    },
+    "extra_parts_top": {
+      "Shelf": 1
+    }
+  },
+  "worst_samples": [
+    {
+      "id": "synth_1196",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0737",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0939",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0457",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0595",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0313",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0335",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0640",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0928",
+      "error_score": 3.0
+    },
+    {
+      "id": "synth_0871",
+      "error_score": 3.0
+    }
+  ],
+  "failures": []
+}

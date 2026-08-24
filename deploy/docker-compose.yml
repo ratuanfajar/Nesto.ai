@@ -1,7 +1,4 @@
 # Jalankan dari folder deploy/:   docker compose up -d --build
-#
-# Catatan penting soal path: `context: ..` membuat build context = root repo,
-# karena image butuh "AI Services"/*.py. Jadi dockerfile ditulis relatif ke root.
 
 services:
   nesto-api:
@@ -16,33 +13,20 @@ services:
       - "8000:8000"
 
     volumes:
-      # Bobot hasil merge_adapter.py. read-only: service tidak punya alasan
-      # menulis ke sana, dan mount ro mencegah file 4.4 GB rusak karena bug.
-      # Path dikutip: ada spasi di "AI Services".
       - "../AI Services/outputs/qwen2vl-2b-nesto-lora/merged:/models/merged:ro"
-      # Cache HF dipersistenkan supaya restart container tidak mengunduh ulang
-      # apa pun yang perlu dilengkapi.
       - hf-cache:/cache/huggingface
 
     environment:
       NESTO_MODEL_DIR: /models/merged
-      # false = bf16 (~5 GB VRAM, lebih cepat). true = 4-bit (~2.5 GB VRAM).
       NESTO_LOAD_4BIT: "false"
       NESTO_MAX_NEW_TOKENS: "320"
-      # Satu GPU = satu inference sekaligus. Request berikutnya mengantre,
-      # bukan bertabrakan menjadi CUDA OOM.
       NESTO_MAX_CONCURRENCY: "1"
       NESTO_WARMUP: "true"
       NESTO_MAX_UPLOAD_BYTES: "12582912"
       # WAJIB diganti ke domain frontend kamu sebelum dipakai orang lain.
       NESTO_CORS_ORIGINS: "http://localhost:3000,http://localhost:5173"
-      # Kosongkan hanya kalau service ini tidak bisa dijangkau dari luar.
       NESTO_API_KEY: "${NESTO_API_KEY:-}"
 
-    # GPU passthrough. Butuh NVIDIA Container Toolkit di host (di Windows:
-    # Docker Desktop dengan backend WSL2 + driver NVIDIA terbaru).
-    # Kalau host tidak punya GPU, hapus blok deploy: ini dan set
-    # NESTO_DEVICE=cpu -- jalan, tapi ~20-60 detik per gambar.
     deploy:
       resources:
         reservations:
@@ -51,8 +35,6 @@ services:
               count: 1
               capabilities: [gpu]
 
-    # Model 4.4 GB dibaca dari disk lewat mmap; shm default 64 MB kadang tidak
-    # cukup untuk dataloader/worker torch.
     shm_size: "1gb"
 
     healthcheck:

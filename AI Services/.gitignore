@@ -1,11 +1,15 @@
-# hasil training (adapter & checkpoint) - besar, jangan masuk git
 outputs/
-
-# dataset asli & gambar
+!outputs/
+outputs/*
+!outputs/qwen2vl-2b-nesto-lora/
+outputs/qwen2vl-2b-nesto-lora/*
+!outputs/qwen2vl-2b-nesto-lora/eval_report.json
+*.zip
 data/*.jsonl
 !data/dataset.example.jsonl
 data/images/
-
-# cache python
 __pycache__/
 *.pyc
+AI Services\bom_engine.py
+AI Services\evaluate.py
+AI Services\nesting_engine.py

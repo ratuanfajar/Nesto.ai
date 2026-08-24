@@ -1,8 +1,7 @@
 """Bentuk request/response HTTP.
 
-Skema spesifikasi furnitur TIDAK didefinisikan ulang di sini - dipakai langsung
-`FurnitureBOMData` dari `nesto_core.schema`, yaitu kontrak yang sama yang dipakai
-generator dataset, training, dan evaluasi. Satu skema, satu tempat.
+Skema spesifikasi furnitur dipakai langsung dari `nesto_core.schema`, kontrak yang
+sama dengan generator dataset, training, dan evaluasi.
 """
 
 from __future__ import annotations
@@ -17,9 +16,7 @@ from nesto_core.schema import FurnitureBOMData
 class BOMOptions(BaseModel):
     """Aturan bengkel. Semua opsional; yang kosong memakai default BOMConfig."""
 
-    # extra="forbid": option yang salah nama harus jadi 422, bukan diabaikan diam-diam.
-    # Tanpa ini `{"kerf_mm": 3}` yang keliru dikirim ke /v1/bom akan dijawab 200
-    # dengan hasil default - user mengira aturannya berubah padahal tidak.
+    # forbid: option salah nama jadi 422, bukan diabaikan lalu dijawab 200 dengan default.
     model_config = ConfigDict(extra="forbid")
 
     back_panel_thickness_mm: Optional[int] = Field(None, ge=0, le=25)
@@ -28,8 +25,7 @@ class BOMOptions(BaseModel):
     drawer_front_height_mm: Optional[float] = Field(None, gt=0, le=500)
     drawer_slide_clearance_mm: Optional[float] = Field(None, ge=0, le=50)
     edging_on_hidden_edges: Optional[bool] = None
-    # Batas pemecahan panel. Diekspos karena harus ikut berubah kalau ukuran
-    # lembaran di NestOptions diubah - lihat pipeline.check_sheet_consistency.
+    # Harus ikut berubah kalau ukuran lembaran diubah - lihat check_sheet_consistency.
     max_panel_length_mm: Optional[int] = Field(None, ge=500, le=5000)
     max_panel_width_mm: Optional[int] = Field(None, ge=500, le=5000)
 

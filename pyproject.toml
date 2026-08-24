@@ -25,10 +25,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Dependensi untuk menjalankan / menguji service HTTP dari venv riset ini.
-# Daftar yang dipakai image produksi ada di deploy/requirements.txt - itu sengaja
-# lebih ramping (tanpa paket training). Yang di sini hanya supaya
-# `deploy/smoke_test.py` bisa jalan tanpa Docker.
+
 serve = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.34",
@@ -45,7 +42,5 @@ torchaudio = { index = "pytorch-cu130" }
 [[tool.uv.index]]
 name = "pytorch-cu130"
 url = "https://download.pytorch.org/whl/cu130"
-# explicit = index ini HANYA dipakai untuk paket yang ditunjuk di [tool.uv.sources].
-# Tanpa ini, index PyTorch juga menyuplai paket umum (mis. requests) dengan versi
-# lama sehingga resolusi dependensi gagal.
+
 explicit = true

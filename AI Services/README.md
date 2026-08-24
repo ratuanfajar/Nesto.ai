@@ -32,9 +32,45 @@ koordinat potong + kebutuhan bahan
 | `bom_engine.py` / `bom_engine.ipynb` | **Tahap 3** - rule engine dimensi global -> part list |
 | `nesting_engine.py` / `nesting_engine.ipynb` | **Tahap 4** - 2D cutting optimizer + visualisasi SVG |
 
+| `merge_adapter.py` | adapter + base model -> bobot penuh siap deploy |
+
 Logika ada di file `.py` (bisa di-import layanan lain), notebook `.ipynb` menjalankan
 dan memvisualkannya langkah demi langkah. Notebook di-run dengan working directory
-folder `AI Services` ini.
+folder `AI Services` ini. `deploy/` mengimpor `schema.py`, `bom_engine.py`,
+`nesting_engine.py`, dan `evaluate.py` sebagai paket `nesto_core` - keempatnya tidak
+boleh dipindah tanpa menyesuaikan `deploy/Dockerfile`.
+
+## Isi folder outputs
+
+Folder `outputs/` tidak masuk git. Isinya berbeda-beda sifatnya:
+
+| Isi | Ukuran | Sifat |
+|---|---|---|
+| `adapter/` | 152 MB | hasil training, tidak tergantikan - inilah yang didistribusikan |
+| `merged/` | 4.2 GB | turunan, dibuat ulang oleh `merge_adapter.py` |
+| `checkpoint-*/` | 213 MB | state resume training; bobot adapternya sama dengan `adapter/` |
+| `eval_report.json` | 10 KB | laporan evaluasi, satu-satunya yang ikut ke git |
+| `val_predictions.jsonl` | 164 KB | prediksi mentah, untuk skor ulang tanpa GPU |
+
+## Distribusi adapter
+
+Adapter berisi seluruh perubahan bobot hasil fine-tuning: 392 tensor LoRA pada
+`q/k/v/o_proj` dan `gate/up/down_proj` di 28 layer bahasa. Vision encoder tidak ikut
+dilatih (`exclude_modules: ".*visual.*"`), dan tidak ada token baru yang ditambahkan,
+jadi tidak ada bobot yang tertinggal di luar folder ini.
+
+Bobot base tidak pernah disentuh; yang disimpan hanya `(alpha/r) x B @ A`. Karena itu
+141 MB cukup untuk mewakili perubahan pada model 2 miliar parameter, dan hanya folder
+inilah yang perlu berpindah tangan:
+
+```bash
+huggingface-cli upload <user>/qwen2vl-2b-nesto-lora \
+    outputs/qwen2vl-2b-nesto-lora/adapter . --private
+```
+
+Penerima menjalankan `python merge_adapter.py` - base model diunduh otomatis dari
+HuggingFace, dan `nesto_merge_info.json` mencatat sidik jari adapter yang menyatu
+supaya versi yang dipakai bisa dipastikan, bukan ditebak dari nama folder.
 
 ## Menjalankan lewat CLI
 
