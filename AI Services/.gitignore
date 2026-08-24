@@ -1,15 +1,34 @@
+# Pattern relatif terhadap folder "AI Services/" ini - jangan tulis prefix
+# "AI Services/" lagi, dan pemisah path selalu "/" bukan "\".
+
+# Hasil training. Adapter didistribusikan lewat HuggingFace/Drive, merged/
+# dibuat ulang oleh merge_adapter.py.
 outputs/
+
+# Kecuali laporan evaluasi. Folder induk di-unignore dulu karena git tidak
+# masuk ke direktori yang sudah dikecualikan.
 !outputs/
 outputs/*
 !outputs/qwen2vl-2b-nesto-lora/
 outputs/qwen2vl-2b-nesto-lora/*
 !outputs/qwen2vl-2b-nesto-lora/eval_report.json
+
+# Arsip. "outputs/" tidak menutupi "outputs.zip" - beda nama, beda pattern.
 *.zip
+
+# Modul yang di-maintain lewat notebook. Dikeluarkan dari repo atas permintaan;
+# lihat catatan di deploy/README.md soal dampaknya ke docker build.
+bom_engine.py
+evaluate.py
+nesting_engine.py
+
+# Dataset asli & gambar
 data/*.jsonl
 !data/dataset.example.jsonl
 data/images/
+dataset_generator/synthetic_furniture_dataset/
+dataset_generator/synthetic_furniture_dataset_v2/
+
+# Cache python
 __pycache__/
 *.pyc
-AI Services\bom_engine.py
-AI Services\evaluate.py
-AI Services\nesting_engine.py
