@@ -13,6 +13,9 @@ outputs/*
 outputs/qwen2vl-2b-nesto-lora/*
 !outputs/qwen2vl-2b-nesto-lora/eval_report.json
 !outputs/qwen2vl-2b-nesto-lora/adapter/
+# Prediksi mentah val set: pasangan data untuk eval_report.json, dan bikin
+# `evaluate.py --predictions` bisa skor ulang tanpa GPU.
+!outputs/qwen2vl-2b-nesto-lora/val_predictions.jsonl
 
 # Arsip. "outputs/" tidak menutupi "outputs.zip" - beda nama, beda pattern.
 *.zip
