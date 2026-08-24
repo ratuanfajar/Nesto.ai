@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 162.0,
+    "width_cm": 54.9,
+    "height_cm": 84.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.6,
+    "offset_cm": 3.1
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 2,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Maple",
+    "finish_code": "TH 998 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

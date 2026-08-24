@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 136.0,
+    "width_cm": 66.8,
+    "height_cm": 109.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.2,
+    "offset_cm": 4.2
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 15,
+    "finish": "Veneer",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 71.8,
+    "depth_cm": 32.5,
+    "height_cm": 15.3
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

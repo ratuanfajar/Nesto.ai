@@ -1,0 +1,36 @@
+# Dependensi RUNTIME saja. Semua paket training (trl, datasets, matplotlib,
+# ipykernel, pandas) sengaja tidak ada di sini - image serving tidak perlu
+# bisa melatih, dan setiap paket ekstra adalah permukaan serang tambahan.
+#
+# torch diambil dari index PyTorch, bukan PyPI. --index-url (bukan --extra-)
+# supaya pip tidak diam-diam memilih build CPU dari PyPI yang nomor versinya
+# sama; PyPI tetap dipakai untuk paket lain lewat --extra-index-url.
+--index-url https://download.pytorch.org/whl/cu130
+--extra-index-url https://pypi.org/simple
+
+torch==2.9.1
+torchvision==0.24.1
+
+# Di-pin ke commit yang sama dengan uv.lock proyek ini. Qwen2-VL di transformers
+# masih berubah cepat; "transformers dari main" pada hari build yang berbeda
+# artinya model yang sudah diverifikasi bisa berperilaku lain.
+transformers @ git+https://github.com/huggingface/transformers@d56c55bf564ddb176759eb6ec199442682564916
+
+accelerate>=1.14.0
+qwen-vl-utils>=0.0.14
+pillow>=12.3.0
+pydantic>=2.13.4
+rectpack>=0.2.2
+
+# Hanya dipakai kalau NESTO_LOAD_4BIT=true. Tetap dipasang supaya menukar mode
+# tidak butuh rebuild image.
+bitsandbytes>=0.50.1
+
+fastapi>=0.115
+uvicorn[standard]>=0.34
+python-multipart>=0.0.20
+
+# peft TIDAK ada di sini, dan itu memang inti dari langkah merge: bobot LoRA
+# sudah menyatu ke model, jadi runtime tidak lagi butuh peft. Kalau kamu memilih
+# menyajikan folder `adapter/` mentah, tambahkan `peft>=0.20.0` dan ubah
+# app/vlm.py untuk memanggil PeftModel.from_pretrained.

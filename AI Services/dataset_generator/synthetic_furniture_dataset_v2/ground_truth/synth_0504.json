@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 128.8,
+    "width_cm": 71.7,
+    "height_cm": 105.3
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.1,
+    "offset_cm": 4.6
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 437 MR"
+  },
+  "drop_pocket": {
+    "length_cm": 69.2,
+    "depth_cm": 29.4,
+    "height_cm": 23.8
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

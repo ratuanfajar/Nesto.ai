@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 185.3,
+    "width_cm": 54.7,
+    "height_cm": 109.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.4,
+    "offset_cm": 3.4
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "PU Coating",
+    "finish_color": "Walnut",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 86.0,
+    "depth_cm": 26.3,
+    "height_cm": 21.8
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

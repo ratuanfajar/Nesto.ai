@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 130.8,
+    "width_cm": 59.2,
+    "height_cm": 104.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.3,
+    "offset_cm": 5.4
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 350 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 68.8,
+    "depth_cm": 31.6,
+    "height_cm": 24.6
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

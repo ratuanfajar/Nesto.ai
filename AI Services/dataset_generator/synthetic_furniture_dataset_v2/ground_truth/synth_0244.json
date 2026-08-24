@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 113.0,
+    "width_cm": 39.5,
+    "height_cm": 199.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.6,
+    "offset_cm": 2.1
+  },
+  "partitions": {
+    "shelves_count": 4,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "Veneer",
+    "finish_color": "Maple",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

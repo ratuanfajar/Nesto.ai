@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 194.8,
+    "width_cm": 50.7,
+    "height_cm": 88.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.1,
+    "offset_cm": 4.2
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 79.8,
+    "depth_cm": 25.6,
+    "height_cm": 24.1
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

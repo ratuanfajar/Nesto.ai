@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 130.1,
+    "width_cm": 40.4,
+    "height_cm": 150.2
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.9,
+    "offset_cm": 2.8
+  },
+  "partitions": {
+    "shelves_count": 5,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "PU Coating",
+    "finish_color": "Walnut",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

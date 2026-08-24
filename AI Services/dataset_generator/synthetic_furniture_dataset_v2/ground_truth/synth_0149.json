@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 124.4,
+    "width_cm": 56.9,
+    "height_cm": 106.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.1,
+    "offset_cm": 5.7
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 233 AA"
+  },
+  "drop_pocket": {
+    "length_cm": 68.4,
+    "depth_cm": 29.4,
+    "height_cm": 20.1
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

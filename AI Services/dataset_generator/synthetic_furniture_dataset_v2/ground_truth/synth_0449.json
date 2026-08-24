@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 215.3,
+    "width_cm": 65.6,
+    "height_cm": 103.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.6,
+    "offset_cm": 3.7
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 158 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 89.9,
+    "depth_cm": 30.3,
+    "height_cm": 22.7
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

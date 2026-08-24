@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 216.7,
+    "width_cm": 74.6,
+    "height_cm": 89.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.4,
+    "offset_cm": 5.3
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 994 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 99.0,
+    "depth_cm": 36.0,
+    "height_cm": 18.2
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

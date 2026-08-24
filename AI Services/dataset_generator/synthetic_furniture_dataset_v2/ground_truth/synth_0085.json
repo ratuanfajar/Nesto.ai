@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 131.2,
+    "width_cm": 32.7,
+    "height_cm": 208.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.2,
+    "offset_cm": 3.8
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 430 AA"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

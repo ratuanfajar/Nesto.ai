@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 186.8,
+    "width_cm": 58.3,
+    "height_cm": 87.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.9,
+    "offset_cm": 4.1
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 934 AA"
+  },
+  "drop_pocket": {
+    "length_cm": 81.8,
+    "depth_cm": 34.3,
+    "height_cm": 22.3
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

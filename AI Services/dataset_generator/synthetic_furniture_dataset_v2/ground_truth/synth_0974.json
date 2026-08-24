@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 120.5,
+    "width_cm": 78.1,
+    "height_cm": 103.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.7,
+    "offset_cm": 3.6
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "Melamine",
+    "finish_color": "Grey",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 69.2,
+    "depth_cm": 31.3,
+    "height_cm": 21.3
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 146.5,
+    "width_cm": 76.7,
+    "height_cm": 101.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.1,
+    "offset_cm": 4.3
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 112 AA"
+  },
+  "drop_pocket": {
+    "length_cm": 82.9,
+    "depth_cm": 31.5,
+    "height_cm": 16.9
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

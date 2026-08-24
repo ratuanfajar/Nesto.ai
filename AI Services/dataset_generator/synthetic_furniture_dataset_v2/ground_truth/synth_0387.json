@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 125.2,
+    "width_cm": 31.0,
+    "height_cm": 157.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.3,
+    "offset_cm": 2.1
+  },
+  "partitions": {
+    "shelves_count": 4,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "PU Coating",
+    "finish_color": "Putih",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

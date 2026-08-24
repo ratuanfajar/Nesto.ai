@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 191.4,
+    "width_cm": 69.3,
+    "height_cm": 97.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.3,
+    "offset_cm": 3.2
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 113 AA"
+  },
+  "drop_pocket": {
+    "length_cm": 114.8,
+    "depth_cm": 30.5,
+    "height_cm": 20.9
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

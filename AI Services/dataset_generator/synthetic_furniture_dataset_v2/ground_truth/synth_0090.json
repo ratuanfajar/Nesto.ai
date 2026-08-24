@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 179.8,
+    "width_cm": 75.3,
+    "height_cm": 101.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.4,
+    "offset_cm": 3.0
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 471 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 76.7,
+    "depth_cm": 34.1,
+    "height_cm": 18.7
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

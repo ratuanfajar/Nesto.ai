@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 156.0,
+    "width_cm": 39.6,
+    "height_cm": 187.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.3,
+    "offset_cm": 2.4
+  },
+  "partitions": {
+    "shelves_count": 5,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 25,
+    "finish": "Melamine",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

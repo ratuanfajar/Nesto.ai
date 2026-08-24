@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 122.7,
+    "width_cm": 41.7,
+    "height_cm": 183.2
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.8,
+    "offset_cm": 1.9
+  },
+  "partitions": {
+    "shelves_count": 4,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 18,
+    "finish": "Duco",
+    "finish_color": "Putih",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

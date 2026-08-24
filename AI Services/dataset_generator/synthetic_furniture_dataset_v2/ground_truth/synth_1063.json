@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 217.9,
+    "width_cm": 58.0,
+    "height_cm": 102.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.3,
+    "offset_cm": 5.5
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 897 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 111.0,
+    "depth_cm": 33.3,
+    "height_cm": 19.5
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 166.5,
+    "width_cm": 56.8,
+    "height_cm": 91.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.3,
+    "offset_cm": 5.3
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 25,
+    "finish": "PU Coating",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 69.5,
+    "depth_cm": 26.6,
+    "height_cm": 20.4
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

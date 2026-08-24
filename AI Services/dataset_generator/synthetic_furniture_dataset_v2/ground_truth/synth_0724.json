@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 154.6,
+    "width_cm": 53.1,
+    "height_cm": 79.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.6,
+    "offset_cm": 4.9
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 2,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 15,
+    "finish": "PU Coating",
+    "finish_color": null,
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

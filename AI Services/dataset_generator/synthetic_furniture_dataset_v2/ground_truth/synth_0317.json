@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 151.8,
+    "width_cm": 40.9,
+    "height_cm": 174.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.2,
+    "offset_cm": 3.0
+  },
+  "partitions": {
+    "shelves_count": 4,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "Duco",
+    "finish_color": "Walnut",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

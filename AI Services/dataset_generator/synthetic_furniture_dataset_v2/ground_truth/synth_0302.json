@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 143.5,
+    "width_cm": 63.3,
+    "height_cm": 99.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.1,
+    "offset_cm": 5.2
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 15,
+    "finish": "Melamine",
+    "finish_color": "Abu",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

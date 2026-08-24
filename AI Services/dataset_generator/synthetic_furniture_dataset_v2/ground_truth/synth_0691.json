@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 145.1,
+    "width_cm": 36.7,
+    "height_cm": 156.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.6,
+    "offset_cm": 2.2
+  },
+  "partitions": {
+    "shelves_count": 4,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 758 AA"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

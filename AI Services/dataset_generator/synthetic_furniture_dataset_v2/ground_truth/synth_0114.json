@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 183.1,
+    "width_cm": 52.0,
+    "height_cm": 88.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.1,
+    "offset_cm": 4.4
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Grey",
+    "finish_code": "TH 117 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 96.6,
+    "depth_cm": 30.5,
+    "height_cm": 24.1
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,29 @@
+{
+  "furniture_type": "nightstand",
+  "overall_dimensions": {
+    "length_cm": 47.2,
+    "width_cm": 43.6,
+    "height_cm": 52.5
+  },
+  "plinth": {
+    "has_plinth": false,
+    "height_cm": 0.0,
+    "offset_cm": 0.0
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 3
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 836 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

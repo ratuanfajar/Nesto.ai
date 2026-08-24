@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 157.2,
+    "width_cm": 34.1,
+    "height_cm": 198.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.7,
+    "offset_cm": 2.7
+  },
+  "partitions": {
+    "shelves_count": 6,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "PU Coating",
+    "finish_color": "Walnut",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

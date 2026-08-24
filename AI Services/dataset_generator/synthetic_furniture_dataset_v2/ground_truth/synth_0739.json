@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 152.7,
+    "width_cm": 61.3,
+    "height_cm": 87.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.4,
+    "offset_cm": 5.4
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 398 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 77.6,
+    "depth_cm": 30.6,
+    "height_cm": 15.9
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

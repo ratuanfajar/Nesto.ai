@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 139.8,
+    "width_cm": 62.0,
+    "height_cm": 102.2
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.7,
+    "offset_cm": 3.3
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "Duco",
+    "finish_color": "Walnut",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 81.6,
+    "depth_cm": 25.7,
+    "height_cm": 25.0
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,26 @@
+# Build context adalah root repo, dan di root ada ~10 GB yang TIDAK boleh
+# ikut terkirim ke daemon Docker: bobot model, checkpoint, dan 1500 gambar
+# dataset. Tanpa file ini `docker build` terasa menggantung bermenit-menit
+# hanya untuk "sending build context".
+#
+# Bobot model TIDAK pernah masuk image - dia di-mount sebagai volume.
+
+AI Services/outputs/
+AI Services/dataset_generator/synthetic_furniture_dataset/
+AI Services/dataset_generator/synthetic_furniture_dataset_v2/
+AI Services/gold_test/
+**/__pycache__/
+**/*.pyc
+**/.ipynb_checkpoints/
+
+# Notebook tidak dipakai runtime, dan `evaluate.ipynb` sendirian 3 MB karena
+# menyimpan output gambar.
+**/*.ipynb
+
+.git/
+.venv/
+venv/
+uv.lock
+nesto_ai.egg-info/
+deploy/frontend/node_modules/
+*.log

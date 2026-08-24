@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 120.4,
+    "width_cm": 31.6,
+    "height_cm": 158.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.4,
+    "offset_cm": 3.9
+  },
+  "partitions": {
+    "shelves_count": 4,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 12,
+    "finish": "Veneer",
+    "finish_color": "Abu",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

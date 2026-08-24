@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 75.9,
+    "width_cm": 62.2,
+    "height_cm": 75.4
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.5,
+    "offset_cm": 4.2
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 3,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Walnut",
+    "finish_code": "TH 376 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

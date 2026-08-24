@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 127.7,
+    "width_cm": 64.9,
+    "height_cm": 79.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 11.6,
+    "offset_cm": 4.4
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 2,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 281 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

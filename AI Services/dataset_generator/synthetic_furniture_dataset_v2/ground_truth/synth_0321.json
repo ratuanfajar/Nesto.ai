@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 183.9,
+    "width_cm": 52.3,
+    "height_cm": 89.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.1,
+    "offset_cm": 5.3
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "Melamine",
+    "finish_color": "Maple",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 79.7,
+    "depth_cm": 24.3,
+    "height_cm": 18.2
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

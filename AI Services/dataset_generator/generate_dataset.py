@@ -70,6 +70,19 @@ class FurnitureBOMData(BaseModel):
 
 
 # 2. GENERATOR PARAMETER REALISTIS (DOMAIN CONSTRAINTS)
+def _plinth(has: bool, height: float, offset: float) -> PlinthBase:
+    """Tanpa plinth -> tinggi & setback dinolkan.
+
+    Kalau plinth tidak ada, kedua angka itu tak punya jejak visual apa pun di
+    gambar; membiarkannya acak berarti melatih model menebak label yang mustahil
+    dibaca. 0.0 adalah nilai yang benar secara konstruksi (lih. bom_engine).
+    """
+    if not has:
+        return PlinthBase(has_plinth=False, height_cm=0.0, offset_cm=0.0)
+    return PlinthBase(has_plinth=True, height_cm=height, offset_cm=offset)
+
+
+
 def sample_furniture_parameters() -> FurnitureBOMData:
     ftype = random.choices(
         ["reception_desk", "base_cabinet", "bookshelf", "nightstand"],
@@ -83,7 +96,7 @@ def sample_furniture_parameters() -> FurnitureBOMData:
         has_plinth = True
         plinth_h = round(random.uniform(5.0, 10.0), 1)
         plinth_off = round(random.uniform(3.0, 6.0), 1)
-        has_drop = random.choice([True, False])
+        has_drop = random.random() < 0.7
         drop = None
         if has_drop:
             drop = DropPocket(
@@ -108,7 +121,9 @@ def sample_furniture_parameters() -> FurnitureBOMData:
         return FurnitureBOMData(
             furniture_type=ftype,
             overall_dimensions=OverallDimensions(length_cm=length, width_cm=width, height_cm=height),
-            plinth=PlinthBase(has_plinth=True, height_cm=random.choice([8.0, 10.0]), offset_cm=random.choice([3.0, 5.0])),
+            plinth=PlinthBase(has_plinth=True,
+                              height_cm=round(random.uniform(6.0, 12.0), 1),
+                              offset_cm=round(random.uniform(2.0, 6.0), 1)),
             partitions=StructuralPartitions(shelves_count=random.randint(1, 3), doors_count=doors, drawers_count=random.randint(0, 2)),
             has_curve=False
         )
@@ -120,7 +135,9 @@ def sample_furniture_parameters() -> FurnitureBOMData:
         return FurnitureBOMData(
             furniture_type=ftype,
             overall_dimensions=OverallDimensions(length_cm=length, width_cm=width, height_cm=height),
-            plinth=PlinthBase(has_plinth=True, height_cm=8.0, offset_cm=2.0),
+            plinth=PlinthBase(has_plinth=True,
+                              height_cm=round(random.uniform(5.0, 10.0), 1),
+                              offset_cm=round(random.uniform(1.5, 4.0), 1)),
             partitions=StructuralPartitions(shelves_count=random.randint(3, 6), doors_count=0, drawers_count=0),
             has_curve=False
         )
@@ -132,7 +149,9 @@ def sample_furniture_parameters() -> FurnitureBOMData:
         return FurnitureBOMData(
             furniture_type=ftype,
             overall_dimensions=OverallDimensions(length_cm=length, width_cm=width, height_cm=height),
-            plinth=PlinthBase(has_plinth=random.choice([True, False]), height_cm=5.0, offset_cm=2.0),
+            plinth=_plinth(random.choice([True, False]),
+                           round(random.uniform(3.0, 8.0), 1),
+                           round(random.uniform(1.5, 4.0), 1)),
             partitions=StructuralPartitions(shelves_count=0, doors_count=0, drawers_count=random.randint(1, 3)),
             has_curve=False
         )
@@ -220,6 +239,24 @@ def draw_cad_dimension(ax, a3, b3, text, label_side=(0, 0), text_rot=0, witness_
             rotation_mode='anchor',
             bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="none", alpha=0.9))
 
+def draw_iso_detail_dim(ax, a3, b3, text, label_side=(0, 0), text_rot=0, witness_from=None):
+    """Dimensi detail (plinth / drop pocket): sama seperti draw_cad_dimension
+    tapi panah & huruf lebih kecil supaya tak menutupi dimensi utama."""
+    p1, p2 = project_iso(*a3), project_iso(*b3)
+    if witness_from is not None:
+        w1, w2 = witness_from
+        for src, dst in ((project_iso(*w1), p1), (project_iso(*w2), p2)):
+            ax.plot([src[0], dst[0]], [src[1], dst[1]],
+                    color="#94a3b8", lw=0.6, ls=(0, (3, 2)))
+    ax.annotate("", xy=p2, xytext=p1,
+                arrowprops=dict(arrowstyle="<->", color="#1f2937", lw=0.9,
+                                shrinkA=0, shrinkB=0, mutation_scale=9))
+    ax.text((p1[0] + p2[0]) / 2 + label_side[0], (p1[1] + p2[1]) / 2 + label_side[1],
+            text, fontsize=7.5, fontweight='bold', color="#111827",
+            ha='center', va='center', rotation=text_rot, rotation_mode='anchor',
+            bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.9))
+
+
 def _draw_partitions(ax, data, L, W, H):
     """Gambar partisi (laci/pintu/rak) pada bidang muka depan agar tiap
     field JSON dapat dihitung secara visual dari gambar."""
@@ -304,6 +341,9 @@ def render_furniture_sketch(data: FurnitureBOMData, save_path: str):
         p1, p2 = c[e[0]], c[e[1]]
         ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color='#1e293b', lw=1.8)
 
+    # Titik ekstra (label detail) yg wajib ikut diperhitungkan saat set_xlim
+    extra_pts = []
+
     # Partisi struktural (laci / pintu / rak) pada muka depan
     _draw_partitions(ax, data, L, W, H)
 
@@ -315,6 +355,19 @@ def render_furniture_sketch(data: FurnitureBOMData, save_path: str):
         _face_line(ax, p_off, pH, L - p_off, pH, color='#64748b', lw=1.3)
         _face_line(ax, p_off, 0, p_off, pH, color='#64748b', lw=1.1)
         _face_line(ax, L - p_off, 0, L - p_off, pH, color='#64748b', lw=1.1)
+        _m = max(L, W, H)
+        # dimensi tinggi plinth (vertikal, di kiri muka depan)
+        dx = -_m * 0.06
+        draw_iso_detail_dim(
+            ax, (dx, 0, 0), (dx, 0, pH), f"{fmt(pH)}",
+            label_side=(-_m * 0.05, 0), text_rot=90,
+            witness_from=((0, 0, 0), (0, 0, pH)))
+        # dimensi setback plinth (horizontal, di depan-bawah kiri)
+        dy = -_m * 0.09
+        draw_iso_detail_dim(
+            ax, (0, dy, 0), (p_off, dy, 0), f"{fmt(p_off)}",
+            label_side=(0, -max(L, W, H) * 0.035), text_rot=30,
+            witness_from=((0, 0, 0), (p_off, 0, 0)))
 
     # Rendering Drop Pocket (cekungan pada permukaan atas z=H)
     if data.drop_pocket:
@@ -332,6 +385,26 @@ def render_furniture_sketch(data: FurnitureBOMData, save_path: str):
         for x, y in [(ou0, oy0), (ou1, oy0), (ou1, oy1), (ou0, oy1)]:
             a, b = project_iso(x, y, zt), project_iso(x, y, zb)
             ax.plot([a[0], b[0]], [a[1], b[1]], color='#334155', lw=1.0)
+        # dimensi pocket pada bidang atas: panjang (arah L) & kedalaman (arah W)
+        gapd = max(L, W, H) * 0.05
+        draw_iso_detail_dim(
+            ax, (ou0, oy1 + gapd * 1.6, zt), (ou1, oy1 + gapd * 1.6, zt), f"{fmt(dp.length_cm)}",
+            label_side=(0, gapd * 0.55), text_rot=30,
+            witness_from=((ou0, oy1, zt), (ou1, oy1, zt)))
+        draw_iso_detail_dim(
+            ax, (ou1 + gapd, oy0, zt), (ou1 + gapd, oy1, zt), f"{fmt(dp.depth_cm)}",
+            label_side=(gapd * 0.55, 0), text_rot=-30,
+            witness_from=((ou1, oy0, zt), (ou1, oy1, zt)))
+        # kedalaman turun pocket: leader note (dinding vertikal sulit didimensi di iso)
+        _lp = project_iso(ou0, oy1, (zt + zb) / 2)
+        ax.annotate(f"POCKET DALAM {fmt(dp.height_cm)} cm",
+                    xy=(_lp[0], _lp[1]),
+                    xytext=(_lp[0] - max(L, W, H) * 0.30, _lp[1] + max(L, W, H) * 0.16),
+                    fontsize=7.5, fontweight='bold', color="#111827", ha='right',
+                    va='center',
+                    arrowprops=dict(arrowstyle="->", color="#334155", lw=0.9))
+        extra_pts.append((_lp[0] - max(L, W, H) * 0.42, _lp[1] + max(L, W, H) * 0.16))
+        extra_pts.append(project_iso(ou1 + gapd * 2.2, oy1, zt))
 
     # Rendering Garis Dimensi CAD (di luar siluet, offset konsisten)
     off = max(L, W, H) * 0.15
@@ -361,8 +434,8 @@ def render_furniture_sketch(data: FurnitureBOMData, save_path: str):
         project_iso(L + off_w, 0, 0), project_iso(L + off_w, W, 0),
         project_iso(0, 0, H + off),
     ]
-    xs_all = [p[0] for p in c.values()] + [p[0] for p in dim_pts]
-    ys_all = [p[1] for p in c.values()] + [p[1] for p in dim_pts]
+    xs_all = [p[0] for p in c.values()] + [p[0] for p in dim_pts] + [p[0] for p in extra_pts]
+    ys_all = [p[1] for p in c.values()] + [p[1] for p in dim_pts] + [p[1] for p in extra_pts]
     xmin, xmax = min(xs_all), max(xs_all)
     ymin, ymax = min(ys_all), max(ys_all)
     xr, yr = xmax - xmin, ymax - ymin
@@ -395,6 +468,17 @@ def _dim_line(ax, p1, p2, text, rot=0, label_off=(0, 0)):
     ax.text(mx, my, text, fontsize=8.5, fontweight='bold', color="#111827",
             ha='center', va='center', rotation=rot, rotation_mode='anchor',
             bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="none", alpha=0.9))
+
+def _dim_line_small(ax, p1, p2, text, rot=0, label_off=(0, 0)):
+    """Dimensi detail multiview (plinth / pocket): panah & huruf lebih kecil."""
+    ax.annotate("", xy=p2, xytext=p1,
+                arrowprops=dict(arrowstyle="<->", color=DIMC, lw=0.9,
+                                shrinkA=0, shrinkB=0, mutation_scale=9))
+    ax.text((p1[0] + p2[0]) / 2 + label_off[0], (p1[1] + p2[1]) / 2 + label_off[1],
+            text, fontsize=7.5, fontweight='bold', color="#111827",
+            ha='center', va='center', rotation=rot, rotation_mode='anchor',
+            bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.9))
+
 
 def _witness(ax, a, b):
     ax.plot([a[0], b[0]], [a[1], b[1]], color=WITC, lw=0.7, ls=(0, (4, 3)))
@@ -455,7 +539,22 @@ def render_multiview_2d(data: FurnitureBOMData, save_path: str):
     # ---------- TAMPAK DEPAN ----------
     _panel_rect(ax, fx, fy, L, H, color=FRAME, lw=1.8)
     if data.plinth.has_plinth:
-        ax.plot([fx, fx + L], [fy + base, fy + base], color=GREY, lw=1.2)   # garis toe-kick
+        p_off = data.plinth.offset_cm
+        # toe-kick digambar sbg recess: garis atas + dua sisi vertikal ber-setback
+        ax.plot([fx + p_off, fx + L - p_off], [fy + base, fy + base], color=GREY, lw=1.2)
+        ax.plot([fx + p_off, fx + p_off], [fy, fy + base], color=GREY, lw=1.0)
+        ax.plot([fx + L - p_off, fx + L - p_off], [fy, fy + base], color=GREY, lw=1.0)
+        # dimensi tinggi plinth: di kiri tampak depan, di luar dimensi H
+        pxd = fx - L * 0.155
+        _witness(ax, (fx, fy), (pxd, fy))
+        _witness(ax, (fx + p_off, fy + base), (pxd, fy + base))
+        _dim_line_small(ax, (pxd, fy), (pxd, fy + base), f"{fmt(base)}",
+                        rot=90, label_off=(-L * 0.035, 0))
+        # dimensi setback plinth: di bawah dimensi panjang
+        pyd = fy - H * 0.175
+        _witness(ax, (fx, fy), (fx, pyd)); _witness(ax, (fx + p_off, fy), (fx + p_off, pyd))
+        _dim_line_small(ax, (fx, pyd), (fx + p_off, pyd), f"{fmt(p_off)}",
+                        label_off=(0, -H * 0.032))
     _draw_partitions_flat(ax, data, fx, fy, L, H, base)
     # dimensi L (bawah) & H (kiri)
     dband = H * 0.11
@@ -476,7 +575,16 @@ def render_multiview_2d(data: FurnitureBOMData, save_path: str):
             _dim_line(ax, (xr, a), (xr, b), f"{fmt(b - a)}", rot=90)
 
     # ---------- TAMPAK SAMPING ----------
-    _panel_rect(ax, sx, sy, W, H, color=FRAME, lw=1.8)
+    if data.drop_pocket:
+        _dp = data.drop_pocket
+        _px0, _px1 = sx + (W - _dp.depth_cm) / 2, sx + (W + _dp.depth_cm) / 2
+        _pyb = sy + H - _dp.height_cm
+        # siluet samping dgn mulut cekungan terbuka di sisi atas
+        ax.plot([sx, sx, sx + W, sx + W], [sy + H, sy, sy, sy + H], color=FRAME, lw=1.8)
+        ax.plot([sx, _px0, _px0, _px1, _px1, sx + W],
+                [sy + H, sy + H, _pyb, _pyb, sy + H, sy + H], color=FRAME, lw=1.8)
+    else:
+        _panel_rect(ax, sx, sy, W, H, color=FRAME, lw=1.8)
     if data.plinth.has_plinth:
         ax.plot([sx, sx + W], [sy + base, sy + base], color=GREY, lw=1.2)
     # rak muncul sbg garis horizontal pd tampak samping (kedalaman penuh)
@@ -487,6 +595,24 @@ def render_multiview_2d(data: FurnitureBOMData, save_path: str):
         for i in range(1, ns + 1):
             yy = rb + (rt - rb) * i / (ns + 1)
             ax.plot([sx + W * 0.05, sx + W * 0.95], [yy, yy], color=GREY, lw=0.9, ls=(0, (5, 3)))
+    if data.plinth.has_plinth:
+        po = data.plinth.offset_cm
+        ax.plot([sx + po, sx + W], [sy + base, sy + base], color=GREY, lw=1.2)
+        ax.plot([sx + po, sx + po], [sy, sy + base], color=GREY, lw=1.0)
+    # drop pocket tampak sbg cekungan pd sisi atas -> tinggi & kedalaman terbaca
+    if data.drop_pocket:
+        dps = data.drop_pocket
+        px0, px1, pyb = _px0, _px1, _pyb
+        # tinggi pocket: dimensi di kiri tampak samping (zona kosong antar tampak)
+        hxd = sx - max(W * 0.30, H * 0.10)
+        _witness(ax, (px0, sy + H), (hxd, sy + H)); _witness(ax, (px0, pyb), (hxd, pyb))
+        _dim_line_small(ax, (hxd, pyb), (hxd, sy + H), f"{fmt(dps.height_cm)}",
+                        rot=90, label_off=(-W * 0.09, 0))
+        # kedalaman pocket: dimensi tepat di atas mulut cekungan
+        dyd = sy + H + H * 0.05
+        _witness(ax, (px0, sy + H), (px0, dyd)); _witness(ax, (px1, sy + H), (px1, dyd))
+        _dim_line_small(ax, (px0, dyd), (px1, dyd), f"{fmt(dps.depth_cm)}",
+                        label_off=(0, H * 0.035))
     dbw = H * 0.11
     _witness(ax, (sx, sy), (sx, sy - dbw)); _witness(ax, (sx + W, sy), (sx + W, sy - dbw))
     _dim_line(ax, (sx, sy - dbw * 0.7), (sx + W, sy - dbw * 0.7), f"{fmt(W)} cm",
@@ -510,6 +636,12 @@ def render_multiview_2d(data: FurnitureBOMData, save_path: str):
                 color=GREY, ha='center', va='center')
         _dim_line(ax, (pu0, pv0 - W * 0.12), (pu0 + dp.length_cm, pv0 - W * 0.12),
                   f"{fmt(dp.length_cm)} cm", label_off=(0, -W * 0.05))
+        # kedalaman pocket (arah W) pd tampak atas
+        dxd = pu0 + dp.length_cm + L * 0.05
+        _witness(ax, (pu0 + dp.length_cm, pv0), (dxd, pv0))
+        _witness(ax, (pu0 + dp.length_cm, pv0 + dp.depth_cm), (dxd, pv0 + dp.depth_cm))
+        _dim_line_small(ax, (dxd, pv0), (dxd, pv0 + dp.depth_cm), f"{fmt(dp.depth_cm)} cm",
+                        rot=90, label_off=(L * 0.045, 0))
         ax.text(fx - L * 0.02, ty0 + W * 1.12, "TAMPAK ATAS", fontsize=8,
                 fontweight='bold', color='#334155', ha='left')
         extra_low = (fy - ty0)
@@ -517,16 +649,18 @@ def render_multiview_2d(data: FurnitureBOMData, save_path: str):
     # ---------- LABEL TAMPAK & JUDUL ----------
     ax.text(fx, fy + H + H * 0.06, "TAMPAK DEPAN", fontsize=8.5,
             fontweight='bold', color='#334155', ha='left')
-    ax.text(sx, sy + H + H * 0.06, "TAMPAK SAMPING", fontsize=8.5,
-            fontweight='bold', color='#334155', ha='left')
+    ax.text(sx, sy + H + (H * 0.20 if data.drop_pocket else H * 0.06), "TAMPAK SAMPING",
+            fontsize=8.5, fontweight='bold', color='#334155', ha='left')
 
     ax.set_aspect('equal')
     ax.axis('off')
 
-    xmin = fx - L * 0.18
+    xmin = fx - (L * 0.26 if data.plinth.has_plinth else L * 0.18)
+    if data.drop_pocket:
+        xmin = min(xmin, sx - max(W * 0.30, H * 0.10) - W * 0.18)
     xmax = sx + W + dbwx + max(W * 0.20, H * 0.12)
-    ymin = fy - H * 0.18 - extra_low
-    ymax = fy + H
+    ymin = fy - (H * 0.27 if data.plinth.has_plinth else H * 0.18) - extra_low
+    ymax = fy + H + (H * 0.10 if data.drop_pocket else 0.0)
     xr, yr = xmax - xmin, ymax - ymin
     pad = 0.05 * max(xr, yr)
     head = 0.15 * yr

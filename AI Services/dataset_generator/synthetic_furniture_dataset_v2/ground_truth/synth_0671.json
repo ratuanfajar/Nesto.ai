@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 77.9,
+    "width_cm": 64.9,
+    "height_cm": 86.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.2,
+    "offset_cm": 4.5
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 3,
+    "drawers_count": 2
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Walnut",
+    "finish_code": "TH 736 MR"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

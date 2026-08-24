@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 164.0,
+    "width_cm": 61.8,
+    "height_cm": 87.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.1,
+    "offset_cm": 2.5
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 2,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 440 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

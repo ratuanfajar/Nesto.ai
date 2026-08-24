@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 150.3,
+    "width_cm": 60.7,
+    "height_cm": 81.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.8,
+    "offset_cm": 4.3
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 1,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "PU Coating",
+    "finish_color": "Walnut",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 145.6,
+    "width_cm": 52.3,
+    "height_cm": 91.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.6,
+    "offset_cm": 4.3
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 578 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 78.9,
+    "depth_cm": 31.1,
+    "height_cm": 22.3
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}
