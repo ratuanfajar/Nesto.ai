@@ -1,0 +1,8 @@
+README.md
+main.py
+pyproject.toml
+nesto_ai.egg-info/PKG-INFO
+nesto_ai.egg-info/SOURCES.txt
+nesto_ai.egg-info/dependency_links.txt
+nesto_ai.egg-info/requires.txt
+nesto_ai.egg-info/top_level.txt

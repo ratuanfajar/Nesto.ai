@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 136.1,
+    "width_cm": 70.6,
+    "height_cm": 90.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.2,
+    "offset_cm": 3.4
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 364 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 76.1,
+    "depth_cm": 32.6,
+    "height_cm": 19.9
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

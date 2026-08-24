@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 129.2,
+    "width_cm": 44.2,
+    "height_cm": 171.2
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.4,
+    "offset_cm": 3.2
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Hitam",
+    "finish_code": "TH 530 MR"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

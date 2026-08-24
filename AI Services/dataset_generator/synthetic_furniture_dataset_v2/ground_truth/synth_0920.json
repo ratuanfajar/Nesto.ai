@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 143.4,
+    "width_cm": 61.8,
+    "height_cm": 88.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.9,
+    "offset_cm": 5.4
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Hitam",
+    "finish_code": "TH 301 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 59.1,
+    "depth_cm": 31.9,
+    "height_cm": 22.8
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

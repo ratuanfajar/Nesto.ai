@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 168.2,
+    "width_cm": 61.6,
+    "height_cm": 94.4
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.6,
+    "offset_cm": 5.1
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 15,
+    "finish": "Duco",
+    "finish_color": "Coklat",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 71.2,
+    "depth_cm": 26.1,
+    "height_cm": 21.2
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

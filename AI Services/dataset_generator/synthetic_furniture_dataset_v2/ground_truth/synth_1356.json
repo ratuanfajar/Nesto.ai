@@ -1,0 +1,29 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 152.6,
+    "width_cm": 71.8,
+    "height_cm": 91.6
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.0,
+    "offset_cm": 3.6
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 18,
+    "finish": "PU Coating",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

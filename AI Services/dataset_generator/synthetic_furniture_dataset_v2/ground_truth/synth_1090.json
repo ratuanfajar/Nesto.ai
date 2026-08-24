@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 190.6,
+    "width_cm": 63.3,
+    "height_cm": 107.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.0,
+    "offset_cm": 3.7
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 287 MR"
+  },
+  "drop_pocket": {
+    "length_cm": 94.7,
+    "depth_cm": 30.9,
+    "height_cm": 17.1
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

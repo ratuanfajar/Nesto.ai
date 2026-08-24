@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 166.4,
+    "width_cm": 57.9,
+    "height_cm": 102.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.4,
+    "offset_cm": 3.7
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 689 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 82.9,
+    "depth_cm": 33.1,
+    "height_cm": 22.6
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

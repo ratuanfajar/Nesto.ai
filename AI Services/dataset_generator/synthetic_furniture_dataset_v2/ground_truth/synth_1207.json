@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 184.0,
+    "width_cm": 78.1,
+    "height_cm": 94.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.4,
+    "offset_cm": 5.9
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 394 SD"
+  },
+  "drop_pocket": {
+    "length_cm": 90.7,
+    "depth_cm": 35.0,
+    "height_cm": 16.3
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

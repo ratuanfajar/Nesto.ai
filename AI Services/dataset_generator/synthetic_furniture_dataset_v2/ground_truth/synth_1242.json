@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 156.0,
+    "width_cm": 41.9,
+    "height_cm": 178.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.6,
+    "offset_cm": 3.9
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 243 SD"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

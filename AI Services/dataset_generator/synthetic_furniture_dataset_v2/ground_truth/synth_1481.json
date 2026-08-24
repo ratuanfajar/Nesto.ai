@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 143.8,
+    "width_cm": 70.6,
+    "height_cm": 90.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.7,
+    "offset_cm": 5.6
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 15,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": "TH 591 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 74.7,
+    "depth_cm": 36.4,
+    "height_cm": 18.8
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

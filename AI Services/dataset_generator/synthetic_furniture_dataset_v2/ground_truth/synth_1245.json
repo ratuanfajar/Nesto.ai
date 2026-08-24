@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 133.8,
+    "width_cm": 70.2,
+    "height_cm": 102.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.8,
+    "offset_cm": 5.3
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 25,
+    "finish": "Melamine",
+    "finish_color": "Grey",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 79.1,
+    "depth_cm": 30.6,
+    "height_cm": 23.4
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

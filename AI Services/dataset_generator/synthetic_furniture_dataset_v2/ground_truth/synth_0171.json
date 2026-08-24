@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 158.7,
+    "width_cm": 54.9,
+    "height_cm": 99.3
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 9.8,
+    "offset_cm": 5.6
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "Veneer",
+    "finish_color": null,
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 85.0,
+    "depth_cm": 24.9,
+    "height_cm": 19.1
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

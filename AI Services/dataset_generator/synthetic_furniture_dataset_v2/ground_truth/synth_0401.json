@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 130.1,
+    "width_cm": 57.0,
+    "height_cm": 84.3
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.7,
+    "offset_cm": 3.7
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 2,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 25,
+    "finish": "Melamine",
+    "finish_color": "Coklat",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

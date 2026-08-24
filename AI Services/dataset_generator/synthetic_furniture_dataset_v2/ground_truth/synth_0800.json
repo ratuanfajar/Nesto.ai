@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 84.2,
+    "width_cm": 51.2,
+    "height_cm": 77.9
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.0,
+    "offset_cm": 5.9
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 3,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 385 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 174.7,
+    "width_cm": 72.6,
+    "height_cm": 96.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.1,
+    "offset_cm": 4.8
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "PU Coating",
+    "finish_color": "Maple",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 95.4,
+    "depth_cm": 35.9,
+    "height_cm": 17.4
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

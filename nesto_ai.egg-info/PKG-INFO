@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: nesto-ai
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: <3.13,>=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: transformers @ git+https://github.com/huggingface/transformers
+Requires-Dist: qwen-vl-utils
+Requires-Dist: accelerate>=0.34.0
+Requires-Dist: peft>=0.13.0
+Requires-Dist: bitsandbytes>=0.44.0
+Requires-Dist: trl>=0.11.0
+Requires-Dist: datasets>=2.20.0
+Requires-Dist: pillow>=10.0.0
+Requires-Dist: numpy>=1.26.0
+Requires-Dist: safetensors>=0.4.0
+Requires-Dist: huggingface_hub>=0.25.0
+Provides-Extra: dev
+Requires-Dist: jupyter; extra == "dev"
+Requires-Dist: ipywidgets; extra == "dev"

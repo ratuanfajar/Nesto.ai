@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 189.0,
+    "width_cm": 63.3,
+    "height_cm": 100.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.2,
+    "offset_cm": 4.1
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": null,
+    "finish_code": "TH 296 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 85.0,
+    "depth_cm": 36.8,
+    "height_cm": 17.0
+  },
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

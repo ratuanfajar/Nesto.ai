@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 155.2,
+    "width_cm": 52.0,
+    "height_cm": 86.8
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 10.4,
+    "offset_cm": 3.1
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 1,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 15,
+    "finish": "PU Coating",
+    "finish_color": "Putih",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

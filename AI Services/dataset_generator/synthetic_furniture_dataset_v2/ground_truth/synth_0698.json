@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 128.6,
+    "width_cm": 57.0,
+    "height_cm": 106.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.9,
+    "offset_cm": 4.7
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 25,
+    "finish": "HPL",
+    "finish_color": "Hitam",
+    "finish_code": "TH 609 MR"
+  },
+  "drop_pocket": {
+    "length_cm": 69.5,
+    "depth_cm": 28.3,
+    "height_cm": 22.3
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

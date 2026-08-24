@@ -1,0 +1,29 @@
+{
+  "furniture_type": "nightstand",
+  "overall_dimensions": {
+    "length_cm": 56.2,
+    "width_cm": 35.8,
+    "height_cm": 57.6
+  },
+  "plinth": {
+    "has_plinth": false,
+    "height_cm": 0.0,
+    "offset_cm": 0.0
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "MDF",
+    "board_thickness_mm": 12,
+    "finish": "Veneer",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

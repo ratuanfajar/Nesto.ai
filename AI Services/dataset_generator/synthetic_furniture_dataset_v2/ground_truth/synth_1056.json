@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 136.5,
+    "width_cm": 40.1,
+    "height_cm": 173.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.8,
+    "offset_cm": 1.9
+  },
+  "partitions": {
+    "shelves_count": 5,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 25,
+    "finish": "Veneer",
+    "finish_color": "Hitam",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

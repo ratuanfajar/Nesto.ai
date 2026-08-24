@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 72.4,
+    "width_cm": 53.2,
+    "height_cm": 77.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.6,
+    "offset_cm": 5.2
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 3,
+    "drawers_count": 2
+  },
+  "material": {
+    "board_material": "Plywood",
+    "board_thickness_mm": 18,
+    "finish": "Veneer",
+    "finish_color": "Walnut",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

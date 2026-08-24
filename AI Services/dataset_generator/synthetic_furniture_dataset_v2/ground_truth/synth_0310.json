@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 135.5,
+    "width_cm": 44.7,
+    "height_cm": 203.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 5.9,
+    "offset_cm": 3.7
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Abu",
+    "finish_code": "TH 178 AC"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

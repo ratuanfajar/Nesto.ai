@@ -1,0 +1,29 @@
+{
+  "furniture_type": "nightstand",
+  "overall_dimensions": {
+    "length_cm": 43.4,
+    "width_cm": 42.5,
+    "height_cm": 45.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 7.6,
+    "offset_cm": 3.8
+  },
+  "partitions": {
+    "shelves_count": 0,
+    "doors_count": 0,
+    "drawers_count": 3
+  },
+  "material": {
+    "board_material": "Multiplek",
+    "board_thickness_mm": 25,
+    "finish": "Veneer",
+    "finish_color": "Grey",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

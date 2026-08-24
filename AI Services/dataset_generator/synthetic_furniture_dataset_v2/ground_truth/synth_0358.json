@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 71.3,
+    "width_cm": 59.9,
+    "height_cm": 83.5
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.1,
+    "offset_cm": 4.3
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 2,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Hitam",
+    "finish_code": "TH 286 MR"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

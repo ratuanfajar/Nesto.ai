@@ -1,0 +1,29 @@
+{
+  "furniture_type": "bookshelf",
+  "overall_dimensions": {
+    "length_cm": 85.0,
+    "width_cm": 34.6,
+    "height_cm": 173.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.8,
+    "offset_cm": 3.7
+  },
+  "partitions": {
+    "shelves_count": 4,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 25,
+    "finish": "Veneer",
+    "finish_color": null,
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

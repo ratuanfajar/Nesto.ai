@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 147.1,
+    "width_cm": 52.7,
+    "height_cm": 105.7
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.3,
+    "offset_cm": 5.6
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Walnut",
+    "finish_code": "TH 389 AC"
+  },
+  "drop_pocket": {
+    "length_cm": 64.9,
+    "depth_cm": 30.2,
+    "height_cm": 17.0
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

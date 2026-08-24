@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 68.3,
+    "width_cm": 52.7,
+    "height_cm": 79.1
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.3,
+    "offset_cm": 5.7
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 3,
+    "drawers_count": 2
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 602 AA"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

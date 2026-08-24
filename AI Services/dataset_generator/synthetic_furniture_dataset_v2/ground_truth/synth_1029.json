@@ -1,0 +1,33 @@
+{
+  "furniture_type": "reception_desk",
+  "overall_dimensions": {
+    "length_cm": 129.6,
+    "width_cm": 76.5,
+    "height_cm": 93.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 8.3,
+    "offset_cm": 4.7
+  },
+  "partitions": {
+    "shelves_count": 1,
+    "doors_count": 0,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Blockboard",
+    "board_thickness_mm": 12,
+    "finish": "HPL",
+    "finish_color": "Putih",
+    "finish_code": null
+  },
+  "drop_pocket": {
+    "length_cm": 58.6,
+    "depth_cm": 38.3,
+    "height_cm": 22.6
+  },
+  "has_curve": true,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

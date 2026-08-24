@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 95.3,
+    "width_cm": 59.9,
+    "height_cm": 84.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 6.6,
+    "offset_cm": 2.8
+  },
+  "partitions": {
+    "shelves_count": 3,
+    "doors_count": 1,
+    "drawers_count": 1
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 18,
+    "finish": "HPL",
+    "finish_color": "Coklat",
+    "finish_code": "TH 507 MR"
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

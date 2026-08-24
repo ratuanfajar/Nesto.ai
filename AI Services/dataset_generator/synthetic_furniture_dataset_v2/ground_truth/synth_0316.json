@@ -1,0 +1,29 @@
+{
+  "furniture_type": "base_cabinet",
+  "overall_dimensions": {
+    "length_cm": 66.7,
+    "width_cm": 60.0,
+    "height_cm": 81.0
+  },
+  "plinth": {
+    "has_plinth": true,
+    "height_cm": 11.1,
+    "offset_cm": 3.5
+  },
+  "partitions": {
+    "shelves_count": 2,
+    "doors_count": 3,
+    "drawers_count": 0
+  },
+  "material": {
+    "board_material": "Particle Board",
+    "board_thickness_mm": 12,
+    "finish": "Melamine",
+    "finish_color": "Putih",
+    "finish_code": null
+  },
+  "drop_pocket": null,
+  "has_curve": false,
+  "default_thickness_mm": 18,
+  "default_edging_mm": 1.0
+}

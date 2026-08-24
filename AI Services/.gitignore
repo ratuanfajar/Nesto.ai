@@ -1,0 +1,11 @@
+# hasil training (adapter & checkpoint) - besar, jangan masuk git
+outputs/
+
+# dataset asli & gambar
+data/*.jsonl
+!data/dataset.example.jsonl
+data/images/
+
+# cache python
+__pycache__/
+*.pyc
