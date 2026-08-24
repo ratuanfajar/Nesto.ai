@@ -1,0 +1,8 @@
+# Bobot adapter lewat LFS: 141 MB, di atas batas keras GitHub 100 MB per file.
+AI[[:space:]]Services/outputs/**/adapter/*.safetensors filter=lfs diff=lfs merge=lfs -text
+
+# Berkas pendamping adapter jangan dikonversi line ending-nya. chat_template
+# menentukan format prompt, dan tokenizer.json harus identik byte-per-byte
+# dengan yang dipakai saat training.
+AI[[:space:]]Services/outputs/**/adapter/*.json -text
+AI[[:space:]]Services/outputs/**/adapter/*.jinja -text
