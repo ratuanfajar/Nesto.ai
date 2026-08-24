@@ -20,12 +20,6 @@ outputs/qwen2vl-2b-nesto-lora/*
 # Arsip. "outputs/" tidak menutupi "outputs.zip" - beda nama, beda pattern.
 *.zip
 
-# Modul yang di-maintain lewat notebook. Dikeluarkan dari repo atas permintaan;
-# lihat catatan di deploy/README.md soal dampaknya ke docker build.
-bom_engine.py
-evaluate.py
-nesting_engine.py
-
 # Dataset asli & gambar
 data/*.jsonl
 !data/dataset.example.jsonl
