@@ -14,6 +14,7 @@ import com.example.nesto_app.presentation.commons.LazyBody
 import com.example.nesto_app.presentation.worker.home.widgets.HeaderProjectListSection
 import com.example.nesto_app.presentation.worker.home.widgets.HeaderWidget
 import com.example.nesto_app.presentation.worker.home.widgets.ProjectListSection
+import com.example.nesto_app.presentation.worker.project.create_project.CreateProjectScreen
 import com.example.nesto_app.ui.theme.Dimens
 
 @Composable
@@ -28,7 +29,9 @@ fun HomeWorkerScreen(
         isRefreshing = state.isRefreshing
     ) {
         item {
-            HeaderWidget()
+            HeaderWidget(){
+                navController.navigate(WorkerRoutes.CreateProject)
+            }
         }
 
         item {

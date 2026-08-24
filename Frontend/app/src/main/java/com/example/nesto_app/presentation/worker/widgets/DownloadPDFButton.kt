@@ -1,4 +1,4 @@
-package com.example.nesto_app.presentation.worker.project.detail_project.widgets
+package com.example.nesto_app.presentation.worker.widgets
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult

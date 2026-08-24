@@ -8,6 +8,7 @@ import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import com.example.nesto_app.global.navigations.NavGraph
 import com.example.nesto_app.presentation.worker.home.HomeWorkerScreen
+import com.example.nesto_app.presentation.worker.project.create_project.CreateProjectScreen
 import com.example.nesto_app.presentation.worker.project.detail_project.DetailProjectScreen
 
 
@@ -19,6 +20,10 @@ fun NavGraphBuilder.workerGraph(
     ){
         composable<WorkerRoutes.Home>{
             HomeWorkerScreen(navController = navController)
+        }
+
+        composable<WorkerRoutes.CreateProject>{
+            CreateProjectScreen(navController = navController)
         }
 
         composable<WorkerRoutes.DetailProject>{

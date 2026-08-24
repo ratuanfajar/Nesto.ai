@@ -1,4 +1,4 @@
-package com.example.nesto_app.presentation.worker.project.detail_project.widgets
+package com.example.nesto_app.presentation.worker.widgets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,7 @@ import com.example.nesto_app.presentation.commons.TopAppBarCommon
 import com.example.nesto_app.ui.theme.Dimens
 
 @Composable
-fun HeaderWidget(cutList: CutList, onBack: () -> Unit) {
+fun HeaderWidget(cutList: CutList?, onBack: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.Start,
@@ -23,9 +23,10 @@ fun HeaderWidget(cutList: CutList, onBack: () -> Unit) {
         Text(
             text = "Optimasi Pemotongan 2D", style = MaterialTheme.typography.titleMedium
         )
-        Text(
-            text = "Total Lembar: ${cutList.jobInfo.totalSheetsUsed} | Efisiensi Total: ${cutList.jobInfo.overallEfficiencyPercent}%",
-            style = MaterialTheme.typography.bodyMedium
-        )
+        if(cutList != null)
+            Text(
+                text = "Total Lembar: ${cutList.jobInfo.totalSheetsUsed} | Efisiensi Total: ${cutList.jobInfo.overallEfficiencyPercent}%",
+                style = MaterialTheme.typography.bodyMedium
+            )
     }
 }

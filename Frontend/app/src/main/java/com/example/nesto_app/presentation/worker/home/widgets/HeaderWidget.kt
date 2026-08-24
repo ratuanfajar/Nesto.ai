@@ -11,7 +11,10 @@ import com.example.nesto_app.presentation.commons.TopAppBarCommon
 import com.example.nesto_app.ui.theme.Dimens
 
 @Composable
-fun HeaderWidget(modifier: Modifier = Modifier) {
+fun HeaderWidget(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     Column(
         verticalArrangement = Arrangement.spacedBy(Dimens.SpacePadding)
     ) {
@@ -23,9 +26,7 @@ fun HeaderWidget(modifier: Modifier = Modifier) {
             enabled = true,
             isNotLoading = true,
             title = "+ Buat Proyek",
-            onClick = {
-//                    confirmAction = clearAction
-            }
+            onClick = onClick
         )
     }
 }

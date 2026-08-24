@@ -23,78 +23,102 @@ class PdfExporter @Inject constructor() {
         return runCatching {
             val pdfDocument = PdfDocument()
 
-            // Ukuran standar kertas A4: 595 x 842 pt (72 DPI)
-            val pageWidth = 595
-            val pageHeight = 842
-            val margin = 40f
+            try {
+                // Ukuran standar kertas A4: 595 x 842 pt (72 DPI)
+                val pageWidth = 595
+                val pageHeight = 842
+                val margin = 40f
 
-            // Buat 1 Halaman PDF untuk Setiap Lembaran (Sheet)
-            cutList.sheets.forEachIndexed { index, sheet ->
-                val pageInfo = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, index + 1).create()
-                val page = pdfDocument.startPage(pageInfo)
-                val canvas = page.canvas
+                var pageNumber = 1
 
-                // 1. Render Header Halaman
-                val headerPaint = Paint().apply {
-                    color = Color.BLACK
-                    textSize = 16f
-                    isFakeBoldText = true
+                cutList.sheets.forEach { sheet ->
+                    var page = pdfDocument.startPage(
+                        PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNumber).create()
+                    )
+                    var canvas = page.canvas
+                    pageNumber++
+
+                    // 1. Render Header Halaman
+                    val headerPaint = Paint().apply {
+                        color = Color.BLACK
+                        textSize = 16f
+                        isFakeBoldText = true
+                    }
+                    canvas.drawText("JOB #${cutList.jobInfo.jobId} - LEMBARAN ${sheet.sheetIndex}/${cutList.sheets.size}", margin, 45f, headerPaint)
+
+                    val subHeaderPaint = Paint().apply {
+                        color = Color.DKGRAY
+                        textSize = 10f
+                    }
+                    val infoText = "Material: ${sheet.materialName} (${sheet.thicknessMm}mm) | Efisiensi: ${sheet.efficiencyPercent}% | Kerf: ${cutList.settings.kerfMm}mm"
+                    canvas.drawText(infoText, margin, 62f, subHeaderPaint)
+
+                    val linePaint = Paint().apply {
+                        color = Color.LTGRAY
+                        strokeWidth = 1f
+                    }
+                    canvas.drawLine(margin, 72f, pageWidth - margin, 72f, linePaint)
+
+                    // 2. Kalkulasi Area Gambar Lembaran
+                    val drawAreaWidth = pageWidth - (margin * 2)
+                    val scale = drawAreaWidth / cutList.settings.sheetWidthMm
+                    val drawAreaHeight = cutList.settings.sheetHeightMm * scale
+
+                    val sheetStartX = margin
+                    val sheetStartY = 85f
+
+                    // 3. Gambar Diagram Pemotongan Lembaran
+                    drawSheetDiagram(
+                        canvas = canvas,
+                        sheet = sheet,
+                        startX = sheetStartX,
+                        startY = sheetStartY,
+                        drawWidth = drawAreaWidth,
+                        drawHeight = drawAreaHeight,
+                        scale = scale
+                    )
+
+                    // 4. Gambar Tabel List Potongan (BOM) — mulai tepat di bawah diagram,
+                    // lanjut ke halaman baru hanya jika tidak muat
+                    var partStartIndex = 0
+                    var tableStartY = sheetStartY + drawAreaHeight + 25f
+                    var isFirstTablePage = true
+
+                    while (partStartIndex < sheet.placedParts.size) {
+                        partStartIndex = drawPartTable(
+                            canvas = canvas,
+                            sheet = sheet,
+                            startY = tableStartY,
+                            margin = margin,
+                            pageWidth = pageWidth.toFloat(),
+                            startIndex = partStartIndex,
+                            showHeaderAndLegend = isFirstTablePage
+                        )
+
+                        pdfDocument.finishPage(page)
+
+                        if (partStartIndex < sheet.placedParts.size) {
+                            // Belum selesai — lanjutkan tabel di halaman baru
+                            page = pdfDocument.startPage(
+                                PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNumber).create()
+                            )
+                            canvas = page.canvas
+                            pageNumber++
+                            tableStartY = 40f
+                            isFirstTablePage = false
+                        }
+                    }
                 }
-                canvas.drawText("JOB #${cutList.jobInfo.jobId} - LEMBARAN ${sheet.sheetIndex}/${cutList.sheets.size}", margin, 45f, headerPaint)
 
-                val subHeaderPaint = Paint().apply {
-                    color = Color.DKGRAY
-                    textSize = 10f
-                }
-                val infoText = "Material: ${sheet.materialName} (${sheet.thicknessMm}mm) | Efisiensi: ${sheet.efficiencyPercent}% | Kerf: ${cutList.settings.kerfMm}mm"
-                canvas.drawText(infoText, margin, 62f, subHeaderPaint)
-
-                // Garis pembatas header
-                val linePaint = Paint().apply {
-                    color = Color.LTGRAY
-                    strokeWidth = 1f
-                }
-                canvas.drawLine(margin, 72f, pageWidth - margin, 72f, linePaint)
-
-                // 2. Kalkulasi Area Gambar Lembaran
-                val drawAreaWidth = pageWidth - (margin * 2) // 515 pt
-                val scale = drawAreaWidth / cutList.settings.sheetWidthMm // Skala mm ke PT
-                val drawAreaHeight = cutList.settings.sheetHeightMm * scale // ~257.5 pt
-
-                val sheetStartX = margin
-                val sheetStartY = 85f
-
-                // 3. Gambar Diagram Pemotongan Lembaran (Canvas Native)
-                drawSheetDiagram(
-                    canvas = canvas,
-                    sheet = sheet,
-                    startX = sheetStartX,
-                    startY = sheetStartY,
-                    drawWidth = drawAreaWidth,
-                    drawHeight = drawAreaHeight,
-                    scale = scale
-                )
-
-                // 4. Gambar Tabel List Potongan (BOM) di Bawah Diagram
-                drawPartTable(
-                    canvas = canvas,
-                    sheet = sheet,
-                    startY = sheetStartY + drawAreaHeight + 25f,
-                    margin = margin,
-                    pageWidth = pageWidth.toFloat()
-                )
-
-                pdfDocument.finishPage(page)
+                // Simpan ke File Descriptor
+                contentResolver.openFileDescriptor(uri, "w")?.use { pfd ->
+                    FileOutputStream(pfd.fileDescriptor).use { outputStream ->
+                        pdfDocument.writeTo(outputStream)
+                    }
+                } ?: throw Exception("Gagal membuka lokasi penyimpanan file")
+            } finally {
+                pdfDocument.close()
             }
-
-            // Simpan ke File Descriptor
-            contentResolver.openFileDescriptor(uri, "w")?.use { pfd ->
-                FileOutputStream(pfd.fileDescriptor).use { outputStream ->
-                    pdfDocument.writeTo(outputStream)
-                }
-            } ?: throw Exception("Gagal membuka lokasi penyimpanan file")
-
-            pdfDocument.close()
         }
     }
 
@@ -208,24 +232,42 @@ class PdfExporter @Inject constructor() {
             }
         }
     }
-
     private fun drawPartTable(
         canvas: android.graphics.Canvas,
         sheet: Sheet,
         startY: Float,
         margin: Float,
-        pageWidth: Float
-    ) {
+        pageWidth: Float,
+        startIndex: Int,
+        showHeaderAndLegend: Boolean
+    ): Int {
         var currentY = startY
 
-        // Header Tabel
-        val titlePaint = Paint().apply {
-            color = Color.BLACK
-            textSize = 11f
-            isFakeBoldText = true
+        if (showHeaderAndLegend) {
+            val legendPaint = Paint().apply {
+                color = "#DC2626".toColorInt()
+                textSize = 8f
+                isAntiAlias = true
+            }
+            canvas.drawText("* Garis Merah = Indikator Sisi Pelapis Edge Banding", margin, currentY, legendPaint)
+            currentY += 14f
+
+            val titlePaint = Paint().apply {
+                color = Color.BLACK
+                textSize = 11f
+                isFakeBoldText = true
+            }
+            canvas.drawText("DAFTAR POTONGAN (PARTS LIST)", margin, currentY, titlePaint)
+            currentY += 12f
+        } else {
+            val titlePaint = Paint().apply {
+                color = Color.BLACK
+                textSize = 11f
+                isFakeBoldText = true
+            }
+            canvas.drawText("DAFTAR POTONGAN (LANJUTAN)", margin, currentY, titlePaint)
+            currentY += 12f
         }
-        canvas.drawText("DAFTAR POTONGAN (PARTS LIST)", margin, currentY, titlePaint)
-        currentY += 12f
 
         val tableHeaderBg = Paint().apply {
             color = "#F1F5F9".toColorInt()
@@ -246,17 +288,20 @@ class PdfExporter @Inject constructor() {
         canvas.drawText("ROTASI", margin + 320f, currentY, headerTextPaint)
         canvas.drawText("EDGE BANDING (Atas,Kanan,Bawah,Kiri)", margin + 380f, currentY, headerTextPaint)
 
-        currentY += 10f
+        currentY += 15f
 
-        // Baris Isian Part
         val rowTextPaint = Paint().apply {
             color = Color.DKGRAY
             textSize = 8f
         }
 
-        sheet.placedParts.forEachIndexed { index, part ->
-            if (currentY > 800f) return // Mencegah meluap keluar batas halaman A4
+        var index = startIndex
+        while (index < sheet.placedParts.size) {
+            if (currentY > 800f) {
+                return index // halaman penuh, lanjut ke halaman berikutnya
+            }
 
+            val part = sheet.placedParts[index]
             val ebStr = part.eb.joinToString(",")
             val rotateStr = if (part.rotated) "90° (Ya)" else "0° (Tidak)"
 
@@ -273,6 +318,9 @@ class PdfExporter @Inject constructor() {
             canvas.drawLine(margin, currentY + 4f, pageWidth - margin, currentY + 4f, linePaint)
 
             currentY += 14f
+            index++
         }
+
+        return index
     }
 }
