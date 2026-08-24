@@ -11,9 +11,7 @@ from typing import Optional, Tuple
 
 from PIL import Image
 
-# Prompt WAJIB identik dengan yang dipakai saat training & evaluasi. Karena itu
-# diimpor, bukan disalin: prompt yang bergeser sedikit saja membuat model keluar
-# dari distribusi latihnya dan akurasinya turun tanpa satu pun pesan error.
+# Diimpor, bukan disalin: prompt yang bergeser = akurasi turun tanpa pesan error.
 from nesto_core.evaluate import DEFAULT_PROMPT
 
 from .config import settings
@@ -28,8 +26,8 @@ class ModelNotReady(RuntimeError):
 class VLM:
     """Singleton pemegang model + processor.
 
-    Load-nya lazy dan dilindungi lock: dua request yang datang bersamaan saat
-    model belum siap tidak boleh sama-sama menarik 4.4 GB bobot ke VRAM.
+    Load lazy dan dilindungi lock: dua request bersamaan saat model belum siap
+    tidak boleh sama-sama menarik 4.4 GB bobot ke VRAM.
     """
 
     def __init__(self) -> None:
@@ -52,8 +50,7 @@ class VLM:
             if self._model is not None:
                 return
 
-            # Import berat ditunda ke sini supaya `/health` tetap menjawab
-            # walau bobot model belum ada -- penting untuk orchestrator.
+            # Ditunda ke sini supaya /health tetap menjawab walau bobot belum ada.
             import torch
             from transformers import AutoProcessor, Qwen2VLForConditionalGeneration
 
@@ -64,7 +61,7 @@ class VLM:
                     f"`merge_adapter.py` lalu mount folder `merged/` ke path itu."
                 )
 
-            # Bukti bahwa bobot ini hasil merge adapter, ditulis merge_adapter.py.
+            # Ditulis merge_adapter.py: bukti bobot ini hasil merge, bukan base model.
             info_path = model_dir / "nesto_merge_info.json"
             if info_path.exists():
                 self.merge_info = json.loads(info_path.read_text(encoding="utf-8"))
@@ -76,10 +73,8 @@ class VLM:
             elif settings.require_finetuned:
                 raise ModelNotReady(
                     f"{model_dir} tidak punya nesto_merge_info.json, jadi tidak bisa "
-                    f"dipastikan ini bobot hasil fine-tune. Base model dan hasil merge "
-                    f"ter-load sama-sama tanpa error, jadi service menolak menebak. "
-                    f"Jalankan ulang `merge_adapter.py` (ia menulis berkas itu), atau "
-                    f"set NESTO_REQUIRE_FINETUNED=false kalau kamu memang sengaja "
+                    f"dipastikan ini bobot fine-tuned. Jalankan ulang `merge_adapter.py`, "
+                    f"atau set NESTO_REQUIRE_FINETUNED=false kalau memang sengaja "
                     f"menyajikan bobot dari sumber lain."
                 )
             else:
@@ -100,9 +95,7 @@ class VLM:
             t0 = time.perf_counter()
             log.info("Memuat model dari %s (4bit=%s)", model_dir, settings.load_4bit)
 
-            # Processor diambil dari folder model, jadi min/max pixels-nya persis
-            # sama dengan saat training (tersimpan sebagai size.shortest_edge /
-            # longest_edge di processor_config.json).
+            # Dari folder model, agar min/max pixels persis sama dengan saat training.
             self._processor = AutoProcessor.from_pretrained(model_dir)
             self._processor.tokenizer.padding_side = "left"   # generate = padding kiri
 
@@ -145,8 +138,7 @@ class VLM:
         inputs = inputs.to(self._model.device)
 
         t0 = time.perf_counter()
-        # Serialisasi di sini, bukan di layer HTTP: apa pun yang memanggil extract()
-        # ikut terlindungi.
+        # Di sini, bukan di layer HTTP, agar semua pemanggil extract() ikut terlindungi.
         with self._gpu_lock:
             with torch.inference_mode():
                 out = self._model.generate(

@@ -1,12 +1,10 @@
 """Buktikan bahwa bobot yang akan disajikan deploy memang model hasil fine-tune.
 
-Bedanya dengan `AI Services/evaluate.py`: yang di sana mengukur *kualitas* model di
-banyak sampel. Yang di sini menjawab satu pertanyaan operasional dengan cepat -
-"folder yang di-mount ini fine-tuned atau base model?" - dan menjawabnya lewat
-`app/vlm.py`, jalur kode yang sama persis dengan yang dipakai service.
-
-Base model mentah tidak akan pernah menghasilkan JSON yang lolos `schema.py`, jadi
-"parse sukses + angka mendekati ground truth" sudah cukup jadi bukti.
+Menjawab satu pertanyaan operasional lewat `app/vlm.py` - jalur kode yang sama
+dengan service: folder yang di-mount ini fine-tuned atau base model? Base mentah
+tidak pernah menghasilkan JSON yang lolos `schema.py`, jadi parse sukses dengan
+angka mendekati ground truth sudah cukup jadi bukti. Untuk mengukur kualitas di
+banyak sampel, pakai `AI Services/evaluate.py`.
 
     # default: 2 sampel validasi di CPU, tidak merebut VRAM
     uv run python deploy/verify_model.py
@@ -14,7 +12,7 @@ Base model mentah tidak akan pernah menghasilkan JSON yang lolos `schema.py`, ja
     # lebih banyak sampel, di GPU
     uv run python deploy/verify_model.py --limit 10 --device cuda
 
-Jalankan ini setiap kali `merged/` diganti, SEBELUM container di-restart.
+Jalankan setiap kali `merged/` diganti, sebelum container di-restart.
 """
 
 from __future__ import annotations
@@ -32,8 +30,7 @@ AI_SERVICES = ROOT / "AI Services"
 DEFAULT_MODEL = AI_SERVICES / "outputs" / "qwen2vl-2b-nesto-lora" / "merged"
 DEFAULT_DATASET = (AI_SERVICES / "dataset_generator" / "synthetic_furniture_dataset_v2")
 
-# Dibandingkan ke ground truth. Sengaja hanya field yang punya garis dimensi di
-# gambar - field tanpa label visual mengukur hafalan model, bukan pembacaannya.
+# Hanya field yang punya garis dimensi di gambar; sisanya mengukur hafalan model.
 COMPARED = [("overall_dimensions", "length_cm"),
             ("overall_dimensions", "width_cm"),
             ("overall_dimensions", "height_cm"),

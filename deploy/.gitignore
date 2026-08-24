@@ -1,2 +1,5 @@
 # Berisi NESTO_API_KEY. Jangan pernah di-commit - salin dari .env.example.
 .env
+
+# arsip - isinya duplikat dari examples/, cukup foldernya yang di-commit
+*.zip

@@ -33,12 +33,10 @@ def nest_config(options: Optional[NestOptions] = None) -> NestConfig:
 
 
 def check_sheet_consistency(bcfg: BOMConfig, ncfg: NestConfig) -> Optional[str]:
-    """Panel lebih besar dari lembaran akan jatuh ke `unplaced` tanpa penjelasan.
+    """Peringatkan kalau batas pemecahan panel BOM beda dari ukuran lembaran nesting.
 
-    bom_engine memecah panel memakai `max_panel_*` miliknya sendiri, sementara
-    nesting memakai `sheet_*`. Kalau dua angka itu beda, part yang sudah dipecah
-    "dengan benar" menurut BOM tetap tidak muat saat nesting. Lebih baik
-    diberitahu daripada user bingung melihat pieces_unplaced > 0.
+    Part yang menurut BOM sudah dipecah dengan benar tetap tidak muat saat nesting,
+    dan hanya muncul diam-diam sebagai pieces_unplaced > 0.
     """
     if (bcfg.max_panel_length_mm, bcfg.max_panel_width_mm) != (
             ncfg.sheet_length_mm, ncfg.sheet_width_mm):
@@ -75,8 +73,6 @@ def run_nesting(parts: List[Part], options: Optional[NestOptions] = None,
     result = nest_parts(parts, cfg)
     payload = result.to_dict()
     if include_svg:
-        # SVG dikirim sebagai string, bukan file: frontend cukup menaruhnya di
-        # dangerouslySetInnerHTML / <img src="data:image/svg+xml,...">, dan tidak
-        # ada file sementara yang perlu dibersihkan di server.
+        # String, bukan file: frontend memakainya langsung, server tidak menyimpan apa pun.
         payload["svg"] = to_svg(result)
     return payload, time.perf_counter() - t0

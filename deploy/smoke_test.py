@@ -1,17 +1,15 @@
 """Smoke test service Nesto. Dua mode, tanpa dependensi test framework.
 
-    # 1. In-process, tanpa GPU dan tanpa Docker. Model sengaja TIDAK dimuat:
-    #    yang diuji justru bahwa endpoint CPU tetap melayani saat model absen.
+    # 1. In-process, tanpa GPU dan tanpa Docker. Model sengaja tidak dimuat:
+    #    yang diuji justru endpoint CPU tetap melayani saat model absen.
     uv run python deploy/smoke_test.py
 
-    # 2. Terhadap service yang sudah jalan (container). Dengan --image ikut
-    #    menguji /v1/extract dan /v1/analyze, jadi butuh model & GPU.
-    uv run python deploy/smoke_test.py --url http://localhost:8000 \
-        --image "AI Services/gold_test/images/xxx.png"
+    # 2. Terhadap service yang sudah jalan. Dengan --image ikut menguji
+    #    /v1/extract dan /v1/analyze, jadi butuh model & GPU.
+    uv run python deploy/smoke_test.py --url http://localhost:8000 --image sketsa.png
 
-Mode 1 memakai `nesto_core` sebagai alias ke folder "AI Services" - persis
-pemetaan yang dilakukan Dockerfile - supaya test menguji layout import yang sama
-dengan yang berjalan di container.
+Mode 1 memetakan `nesto_core` ke folder "AI Services" persis seperti Dockerfile,
+supaya yang diuji adalah layout import yang sama dengan di container.
 """
 
 from __future__ import annotations

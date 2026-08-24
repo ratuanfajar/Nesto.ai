@@ -1,17 +1,13 @@
 """Merge adapter LoRA ke bobot penuh (bf16) untuk deploy tanpa dependensi peft.
 
-Merge WAJIB di atas base model non-quantized. Merge di atas bobot 4-bit
-menghasilkan model rusak karena dequantize-nya lossy.
-
     python merge_adapter.py
     python merge_adapter.py --adapter outputs/.../checkpoint-225 --out outputs/.../merged-e3
 
-Butuh ~10 GB RAM (CPU, bukan VRAM) dan menulis ~4.4 GB ke disk.
+Butuh ~10 GB RAM (CPU, bukan VRAM) dan menulis ~4.4 GB ke disk. Merge wajib di atas
+base non-quantized; di atas bobot 4-bit hasilnya rusak karena dequantize-nya lossy.
 
-Prinsip: script ini tidak menyimpan satu pun angka konfigurasi sendiri. base model,
-chat template, dan batas resolusi gambar semuanya dibaca dari folder adapter, karena
-di situlah nilai yang BENAR-BENAR dipakai saat training tersimpan. Menyalin ulang
-MIN/MAX_PIXELS ke sini akan bocor jadi bug tak terlihat begitu notebook diubah.
+Semua angka konfigurasi dibaca dari folder adapter - di situlah nilai yang dipakai
+saat training tersimpan.
 """
 
 import argparse
@@ -28,14 +24,10 @@ from transformers import AutoProcessor, Qwen2VLForConditionalGeneration
 BASE = Path(__file__).resolve().parent
 DEFAULT_RUN = BASE / "outputs" / "qwen2vl-2b-nesto-lora"
 
-# Penanda bahwa sebuah folder memang hasil merge kita, bukan folder lain yang
-# kebetulan ditunjuk --out. Dipakai sebelum rmtree.
+# Penanda folder hasil merge, dicek sebelum rmtree agar --out salah tidak terhapus.
 MERGE_MARKERS = {"config.json", "model.safetensors", "model.safetensors.index.json"}
 
-# Ditulis ke folder hasil merge. Gunanya satu: membuktikan saat runtime bahwa
-# yang di-mount service memang bobot fine-tuned, bukan base model atau hasil
-# merge lain. Folder base dan folder merged isinya mirip sekali - tanpa berkas
-# ini keduanya ter-load tanpa satu pun pesan error, cuma keluarannya yang beda.
+# Bukti runtime bahwa bobot yang di-mount fine-tuned, bukan base model.
 MERGE_INFO = "nesto_merge_info.json"
 
 
@@ -65,10 +57,9 @@ def write_merge_info(out: Path, adapter: Path, model_id: str, adapter_cfg: dict)
 
 
 def resolve_out_dir(out: Path, force: bool) -> None:
-    """Kosongkan folder tujuan, tapi tolak menghapus apa pun yang bukan hasil merge.
+    """Kosongkan folder tujuan, tapi tolak menghapus yang bukan hasil merge.
 
-    Folder lama harus dihapus, bukan ditimpa: kalau merge sebelumnya menghasilkan
-    beberapa shard dan yang sekarang hanya satu file, shard sisa membuat
+    Dihapus, bukan ditimpa: shard sisa dari merge sebelumnya membuat
     model.safetensors.index.json tidak konsisten dan model gagal di-load.
     """
     if not out.exists():
@@ -89,10 +80,8 @@ def resolve_out_dir(out: Path, force: bool) -> None:
 def load_processor(adapter: Path, model_id: str):
     """Ambil processor dari folder adapter kalau ada; kalau tidak, dari base model.
 
-    Folder adapter hasil `processor.save_pretrained()` di notebook sudah memuat
-    min_pixels/max_pixels (tersimpan sebagai size.shortest_edge/longest_edge) dan
-    chat template yang identik dengan training. Memakainya berarti nol duplikasi
-    konfigurasi dan nol kebutuhan jaringan.
+    Folder adapter menyimpan min/max pixels dan chat template yang identik dengan
+    training, jadi tidak ada konfigurasi yang perlu diduplikasi di sini.
     """
     if (adapter / "processor_config.json").exists():
         print(f"Processor: dari adapter ({adapter.name})")
@@ -119,8 +108,7 @@ def main():
     adapter_cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
     trained_on = adapter_cfg.get("base_model_name_or_path")
 
-    # Merge ke base yang berbeda dari base saat training menghasilkan model yang
-    # ter-load tanpa error tapi keluarannya sampah -- jadi ini dijadikan hard stop.
+    # Merge lintas base = model rusak yang ter-load tanpa error, jadi hard stop.
     model_id = args.model_id or trained_on
     if model_id is None:
         raise SystemExit("adapter_config.json tidak punya base_model_name_or_path; "
