@@ -6,9 +6,9 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nesto_app.domain.entities.CutList
+import com.example.nesto_app.domain.usecases.cutlist.AnalyzeUseCase
 import com.example.nesto_app.utils.PdfExporter
-import com.example.nesto_app.utils.dummy.initProjects
-import com.example.nesto_app.utils.toMultipart
+import com.example.nesto_app.utils.State
 import com.example.nesto_app.utils.ui.AppEventBus
 import com.example.nesto_app.utils.ui.CustomSnackbarVisuals
 import com.example.nesto_app.utils.ui.SnackbarType
@@ -24,7 +24,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreateProjectViewModel @Inject constructor(
-    private val pdfExporter: PdfExporter
+    private val pdfExporter: PdfExporter,
+    private val analyzeUseCase: AnalyzeUseCase
 ) : ViewModel() {
     private val _state = MutableStateFlow(CreateProjectState())
     val state: StateFlow<CreateProjectState> = _state.asStateFlow()
@@ -80,54 +81,40 @@ class CreateProjectViewModel @Inject constructor(
         }
 
         viewModelScope.launch(Dispatchers.IO) {
-            updateState {
-                copy(
-                    isLoading = true,
-                    errorMessage = null
-                )
-            }
-            try {
-                val allowedMimeTypes = listOf("image/jpeg", "image/png", "application/pdf")
-
-                val multipartParts = currentUris.map { uri ->
-                    uri.toMultipart(
-                        context = context,
-                        partName = "files",
-                        allowedMimeTypes = allowedMimeTypes
-                    )
-                }
-
-                val response = initProjects[0].cutList
-
-                if (response != null) {
-                    updateState {
-                        copy(
-                            isLoading = false,
-                            cutList = response
+            analyzeUseCase.run(currentUris).collect {
+                result ->
+                when(result){
+                    is State.Error<*> -> {
+                        AppEventBus.events.emit(
+                            UiEvent.ShowSnackbar(
+                                CustomSnackbarVisuals(
+                                    type = SnackbarType.ERROR,
+                                    message = result.message
+                                )
+                            )
                         )
+                        updateState {
+                            copy(
+                                isLoading = false
+                            )
+                        }
                     }
-                } else {
-                    updateState {
-                        copy(
-                            isLoading = false,
-                            errorMessage = "Gagal memproses dokumen di server"
-                        )
+                    is State.Loading<*> -> {
+                        updateState {
+                            copy(
+                                isLoading = true,
+                                errorMessage = null
+                            )
+                        }
                     }
-                }
-
-            } catch (e: IllegalArgumentException) {
-                updateState {
-                    copy(
-                        isLoading = false,
-                        errorMessage = e.localizedMessage
-                    )
-                }
-            } catch (e: Exception) {
-                updateState {
-                    copy(
-                        isLoading = false,
-                        errorMessage = e.localizedMessage ?: "Terjadi kesalahan tidak terduga"
-                    )
+                    is State.Success<CutList> -> {
+                        updateState {
+                            copy(
+                                isLoading = false,
+                                cutList = result.data
+                            )
+                        }
+                    }
                 }
             }
         }

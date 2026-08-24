@@ -33,7 +33,9 @@ fun PickSources(filePickerLauncher: ManagedActivityResultLauncher<Array<String>,
             .fillMaxWidth()
             .clickable {
                 filePickerLauncher.launch(
-                    arrayOf("image/jpeg", "image/png", "application/pdf")
+                    arrayOf("image/jpeg", "image/png",
+                //                    "application/pdf"
+                                    )
                 )
             },
         shape = RoundedCornerShape(12.dp),

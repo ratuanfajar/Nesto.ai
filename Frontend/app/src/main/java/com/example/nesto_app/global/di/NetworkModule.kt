@@ -1,5 +1,7 @@
 package com.example.nesto_app.global.di
 
+import com.example.nesto_app.data.remotes.services.CutListService
+import com.example.nesto_app.global.networks.NetworkConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,8 +40,14 @@ object NetworkModule {
         }
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://example.com")
+            .baseUrl(NetworkConstants.BASE_URL)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCutListService(retrofit: Retrofit): CutListService{
+        return retrofit.create<CutListService>(CutListService::class.java)
     }
 }

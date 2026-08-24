@@ -13,14 +13,15 @@ import kotlin.time.ExperimentalTime
 val cutList1 = CutList(
     jobInfo = JobInfo(
         jobId = "1",
-        totalPartsPlaced = 8,
+        furnitureType = "Lemari Pakaian",
+        totalPartsPlaced = 7,
         totalSheetsUsed = 2,
-        overallEfficiencyPercent = 81.45f,
-        overallWastePercent = 18.55f
+        overallWastePercent = 18.55f,
+        totalEdgingLengthM = 18.4f
     ),
     settings = Settings(
         sheetWidthMm = 2440f,
-        sheetHeightMm = 1220f,
+        sheetLengthMm = 1220f,
         kerfMm = 3f,
         sheetMarginMm = 10f
     ),
@@ -29,11 +30,12 @@ val cutList1 = CutList(
             sheetId = "1",
             sheetIndex = 1,
             materialName = "Triplek Meranti",
-            thicknessMm = 18,
+            thicknessMm = 18f,
+            widthMm = 2440f,
+            lengthMm = 1220f,
             efficiencyPercent = 84.60f,
             wastePercent = 15.40f,
             placedParts = listOf(
-                // Sisi Kiri (Ukuran asli 600x2100 -> diputar 90 deg jadi 2100x600)
                 PlacedPart(
                     partId = "1",
                     furnitureName = "Lemari Pakaian",
@@ -46,7 +48,6 @@ val cutList1 = CutList(
                     eb = listOf(1, 1, 1, 1),
                     colorCode = "#4E79A7"
                 ),
-                // Sisi Kanan (Ukuran asli 600x2100 -> diputar 90 deg jadi 2100x600)
                 PlacedPart(
                     partId = "2",
                     furnitureName = "Lemari Pakaian",
@@ -71,16 +72,16 @@ val cutList1 = CutList(
                 )
             )
         ),
-
         Sheet(
             sheetId = "2",
             sheetIndex = 2,
             materialName = "Triplek Meranti",
-            thicknessMm = 18,
+            thicknessMm = 18f,
+            widthMm = 2440f,
+            lengthMm = 1220f,
             efficiencyPercent = 78.30f,
             wastePercent = 21.70f,
             placedParts = listOf(
-                // Pintu Kiri (Ukuran asli 580x1900 -> diputar 90 deg jadi 1900x580)
                 PlacedPart(
                     partId = "3",
                     furnitureName = "Lemari Pakaian",
@@ -93,7 +94,6 @@ val cutList1 = CutList(
                     eb = listOf(1, 1, 1, 1),
                     colorCode = "#76B7B2"
                 ),
-                // Pintu Kanan (Ukuran asli 580x1900 -> diputar 90 deg jadi 1900x580)
                 PlacedPart(
                     partId = "4",
                     furnitureName = "Lemari Pakaian",
@@ -106,7 +106,6 @@ val cutList1 = CutList(
                     eb = listOf(1, 1, 1, 1),
                     colorCode = "#EDC949"
                 ),
-                // Rak Atas
                 PlacedPart(
                     partId = "5",
                     furnitureName = "Lemari Pakaian",
@@ -119,7 +118,6 @@ val cutList1 = CutList(
                     eb = listOf(1, 1, 0, 0),
                     colorCode = "#F28E2B"
                 ),
-                // Rak Tengah
                 PlacedPart(
                     partId = "6",
                     furnitureName = "Lemari Pakaian",
@@ -132,7 +130,6 @@ val cutList1 = CutList(
                     eb = listOf(0, 0, 0, 0),
                     colorCode = "#E15759"
                 ),
-                // Rak Bawah
                 PlacedPart(
                     partId = "7",
                     furnitureName = "Lemari Pakaian",
@@ -171,14 +168,15 @@ val cutList1 = CutList(
 val cutList2 = CutList(
     jobInfo = JobInfo(
         jobId = "2",
+        furnitureType = "Meja Kerja & Rak Buku",
         totalPartsPlaced = 11,
         totalSheetsUsed = 3,
-        overallEfficiencyPercent = 81.37f,
-        overallWastePercent = 18.63f
+        overallWastePercent = 18.63f,
+        totalEdgingLengthM = 22.5f
     ),
     settings = Settings(
         sheetWidthMm = 2440f,
-        sheetHeightMm = 1220f,
+        sheetLengthMm = 1220f,
         kerfMm = 3f,
         sheetMarginMm = 10f
     ),
@@ -187,7 +185,9 @@ val cutList2 = CutList(
             sheetId = "3",
             sheetIndex = 1,
             materialName = "Multipleks Plywood",
-            thicknessMm = 15,
+            thicknessMm = 15f,
+            widthMm = 2440f,
+            lengthMm = 1220f,
             efficiencyPercent = 85.40f,
             wastePercent = 14.60f,
             placedParts = listOf(
@@ -215,7 +215,6 @@ val cutList2 = CutList(
                     eb = listOf(1, 1, 1, 1),
                     colorCode = "#59A14F"
                 ),
-                // Digeser ke y = 613f agar titik bawah max = 1213mm
                 PlacedPart(
                     partId = "11",
                     furnitureName = "Meja Kerja",
@@ -252,16 +251,16 @@ val cutList2 = CutList(
                 )
             )
         ),
-
         Sheet(
             sheetId = "4",
             sheetIndex = 2,
             materialName = "Multipleks Plywood",
-            thicknessMm = 15,
+            thicknessMm = 15f,
+            widthMm = 2440f,
+            lengthMm = 1220f,
             efficiencyPercent = 80.50f,
             wastePercent = 19.50f,
             placedParts = listOf(
-                // Diputar 90 deg (1800x350)
                 PlacedPart(
                     partId = "13",
                     furnitureName = "Rak Buku",
@@ -274,7 +273,6 @@ val cutList2 = CutList(
                     eb = listOf(1, 1, 1, 1),
                     colorCode = "#B07AA1"
                 ),
-                // Diputar 90 deg (1800x350)
                 PlacedPart(
                     partId = "14",
                     furnitureName = "Rak Buku",
@@ -323,16 +321,16 @@ val cutList2 = CutList(
                 )
             )
         ),
-
         Sheet(
             sheetId = "5",
             sheetIndex = 3,
             materialName = "Multipleks Plywood",
-            thicknessMm = 15,
+            thicknessMm = 15f,
+            widthMm = 2440f,
+            lengthMm = 1220f,
             efficiencyPercent = 80.40f,
             wastePercent = 19.60f,
             placedParts = listOf(
-                // Diputar 90 deg (1700x1100) -> titik bawah y = 1110mm
                 PlacedPart(
                     partId = "19",
                     furnitureName = "Rak Buku",
@@ -345,7 +343,6 @@ val cutList2 = CutList(
                     eb = listOf(0, 0, 0, 0),
                     colorCode = "#5B9BD5"
                 ),
-                // Diputar agar muat di area kanan
                 PlacedPart(
                     partId = "17",
                     furnitureName = "Rak Buku",

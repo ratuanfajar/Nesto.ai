@@ -42,7 +42,7 @@ fun SheetCanvasVisualizer(
     modifier: Modifier = Modifier
 ) {
     val textMeasurer = rememberTextMeasurer()
-    val aspectRatio = settings.sheetWidthMm / settings.sheetHeightMm
+    val aspectRatio = sheet.widthMm / sheet.lengthMm
     val density = LocalDensity.current
     val baseTypography = MaterialTheme.typography.labelSmall
 
@@ -61,7 +61,7 @@ fun SheetCanvasVisualizer(
             verticalAlignment = Alignment.Bottom
         ) {
             Text(
-                text = "${sheet.sheetId} (${sheet.materialName} ${sheet.thicknessMm}mm)",
+                text = "${sheet.sheetId} (${sheet.materialName})",
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.SemiBold,
                     color = White
@@ -69,7 +69,7 @@ fun SheetCanvasVisualizer(
             )
             Spacer(modifier = Modifier.width(Dimens.SpacePadding))
             Text(
-                text = "Efisiensi: ${sheet.efficiencyPercent}%",
+                text = "Efisiensi Area: ${"%.1f".format(sheet.efficiencyPercent)}%",
                 style = MaterialTheme.typography.titleSmall.copy(
                     fontWeight = FontWeight.Bold,
                     color = Green
@@ -85,7 +85,7 @@ fun SheetCanvasVisualizer(
                 .background(Color(0xFF0F172A))
                 .border(1.dp, Color(0xFF475569))
         ) {
-            val scale = size.width / settings.sheetWidthMm
+            val scale = size.width / sheet.widthMm
 
             // 1. Render Waste
             sheet.wasteOffcuts.forEach { waste ->

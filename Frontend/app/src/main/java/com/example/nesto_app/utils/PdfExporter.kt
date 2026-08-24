@@ -62,7 +62,7 @@ class PdfExporter @Inject constructor() {
                     // 2. Kalkulasi Area Gambar Lembaran
                     val drawAreaWidth = pageWidth - (margin * 2)
                     val scale = drawAreaWidth / cutList.settings.sheetWidthMm
-                    val drawAreaHeight = cutList.settings.sheetHeightMm * scale
+                    val drawAreaHeight = cutList.settings.sheetLengthMm * scale
 
                     val sheetStartX = margin
                     val sheetStartY = 85f
