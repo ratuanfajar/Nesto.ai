@@ -86,7 +86,7 @@ dari `.env`), lalu Run. Atau dari terminal:
 > Studio, atau `./gradlew --stop` lalu build ulang dari terminal) supaya nilai
 > baru ter-refresh ke `BuildConfig`.
 
-Untuk build APK release tanpa Android Studio (mis. dari CI atau mesin lain
+Untuk build APK debug tanpa Android Studio (mis. dari CI atau mesin lain
 tanpa Android SDK terpasang), lihat build lewat Docker di bawah.
 
 ## Build lewat Docker
@@ -120,7 +120,7 @@ Penjelasan tiap baris:
 Setelah build selesai, APK muncul di:
 
 ```
-Frontend/build-output/app-release.apk
+Frontend/build-output/app-debug.apk
 ```
 
 `WIFI_ADDRESS` dan `NESTO_API_KEY` yang dipakai saat build ini diambil dari
