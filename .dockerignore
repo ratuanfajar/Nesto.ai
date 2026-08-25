@@ -1,0 +1,16 @@
+ai-services/outputs/
+ai-services/dataset_generator/synthetic_furniture_dataset/
+ai-services/dataset_generator/synthetic_furniture_dataset_v2/
+ai-services/gold_test/
+**/__pycache__/
+**/*.pyc
+**/.ipynb_checkpoints/
+
+**/*.ipynb
+
+.git/
+.venv/
+venv/
+uv.lock
+nesto_ai.egg-info/
+*.log

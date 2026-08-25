@@ -1,0 +1,62 @@
+# Compose standalone untuk backend saja - dev/test BE sendirian tanpa frontend.
+# Untuk orchestrate be + frontend sekaligus, pakai docker-compose.yml di root repo.
+#
+# Jalankan dari folder be/:   docker compose up -d --build
+#
+# Build context = root repo (".."), bukan folder be/ ini: image backend butuh
+# ai-services/*.py yang diimpor sebagai paket nesto_core, dan file itu ada di
+# luar folder be/. Karena itu dockerfile ditunjuk sebagai "be/Dockerfile".
+
+services:
+  nesto-api:
+    build:
+      context: ..
+      dockerfile: be/Dockerfile
+    image: nesto-ai:1.0.0
+    container_name: nesto-api
+    restart: unless-stopped
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - "../ai-services/outputs/qwen2vl-2b-nesto-lora/merged:/models/merged:ro"
+      - hf-cache:/cache/huggingface
+
+    environment:
+      NESTO_MODEL_DIR: /models/merged
+      NESTO_LOAD_4BIT: "false"
+      NESTO_MAX_NEW_TOKENS: "320"
+      NESTO_MAX_CONCURRENCY: "1"
+      NESTO_WARMUP: "true"
+      NESTO_MAX_UPLOAD_BYTES: "12582912"
+      # WAJIB diganti ke domain frontend kamu sebelum dipakai orang lain.
+      NESTO_CORS_ORIGINS: "*"
+      # Kosongkan hanya kalau service ini tidak bisa dijangkau dari luar.
+      NESTO_API_KEY: "${NESTO_API_KEY:-}"
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    shm_size: "1gb"
+
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=4).status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 180s
+      retries: 3
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  hf-cache:

@@ -1,0 +1,46 @@
+[project]
+name = "nesto-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "accelerate>=1.14.0",
+    "bitsandbytes>=0.50.1",
+    "datasets>=4.0.0",
+    "huggingface-hub>=1.28.0",
+    "ipykernel>=7.3.0",
+    "matplotlib>=3.11.1",
+    "pandas>=3.0.5",
+    "peft>=0.20.0",
+    "pillow>=12.3.0",
+    "pydantic>=2.13.4",
+    "qwen-vl-utils>=0.0.14",
+    "rectpack>=0.2.2",
+    "torch==2.9.1",
+    "torchaudio==2.9.1",
+    "torchvision==0.24.1",
+    "transformers",
+    "trl>=0.10.1",
+]
+
+[project.optional-dependencies]
+
+serve = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "python-multipart>=0.0.20",
+    "httpx>=0.27",
+]
+
+[tool.uv.sources]
+transformers = { git = "https://github.com/huggingface/transformers" }
+torch = { index = "pytorch-cu130" }
+torchvision = { index = "pytorch-cu130" }
+torchaudio = { index = "pytorch-cu130" }
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+
+explicit = true

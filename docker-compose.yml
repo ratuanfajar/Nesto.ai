@@ -1,0 +1,69 @@
+# Orchestrator root: backend (FastAPI + AI) + builder APK frontend.
+# Jalankan dari root repo:   docker compose up -d --build
+
+services:
+  nesto-api:
+    build:
+      context: .
+      dockerfile: be/Dockerfile
+    image: nesto-ai:1.0.0
+    container_name: nesto-api
+    restart: unless-stopped
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - "./ai-services/outputs/qwen2vl-2b-nesto-lora/merged:/models/merged:ro"
+      - hf-cache:/cache/huggingface
+
+    environment:
+      NESTO_MODEL_DIR: /models/merged
+      NESTO_LOAD_4BIT: "false"
+      NESTO_MAX_NEW_TOKENS: "320"
+      NESTO_MAX_CONCURRENCY: "1"
+      NESTO_WARMUP: "true"
+      NESTO_MAX_UPLOAD_BYTES: "12582912"
+      NESTO_CORS_ORIGINS: "*"
+      NESTO_API_KEY: "${NESTO_API_KEY:-}"
+ 
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    shm_size: "1gb"
+
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=4).status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 180s
+      retries: 3
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  nesto-fe-builder:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        WIFI_ADDRESS: "${WIFI_ADDRESS:-10.0.2.2}"
+        NESTO_API_KEY: "${NESTO_API_KEY:-}"
+    image: nesto-fe-builder:1.0.0
+    container_name: nesto-fe-builder
+    profiles: ["build-fe"]
+    volumes:
+      - ./frontend/build-output:/output
+    command: >
+      sh -c "cp /app/app/build/outputs/apk/debug/*.apk /output/ && echo 'APK berhasil dibuat di frontend/build-output/'"
+
+volumes:
+  hf-cache:

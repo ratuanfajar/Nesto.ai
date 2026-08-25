@@ -1,0 +1,32 @@
+# Pattern relatif terhadap folder "AI Services/" ini - jangan tulis prefix
+# "AI Services/" lagi, dan pemisah path selalu "/" bukan "\".
+
+# Hasil training. Adapter didistribusikan lewat HuggingFace/Drive, merged/
+# dibuat ulang oleh merge_adapter.py.
+outputs/
+
+# Kecuali adapter (via Git LFS) dan laporan evaluasi. Folder induk di-unignore
+# dulu karena git tidak masuk ke direktori yang sudah dikecualikan.
+!outputs/
+outputs/*
+!outputs/qwen2vl-2b-nesto-lora/
+outputs/qwen2vl-2b-nesto-lora/*
+!outputs/qwen2vl-2b-nesto-lora/eval_report.json
+!outputs/qwen2vl-2b-nesto-lora/adapter/
+# Prediksi mentah val set: pasangan data untuk eval_report.json, dan bikin
+# `evaluate.py --predictions` bisa skor ulang tanpa GPU.
+!outputs/qwen2vl-2b-nesto-lora/val_predictions.jsonl
+
+# Arsip. "outputs/" tidak menutupi "outputs.zip" - beda nama, beda pattern.
+*.zip
+
+# Dataset asli & gambar
+data/*.jsonl
+!data/dataset.example.jsonl
+data/images/
+dataset_generator/synthetic_furniture_dataset/
+dataset_generator/synthetic_furniture_dataset_v2/
+
+# Cache python
+__pycache__/
+*.pyc
