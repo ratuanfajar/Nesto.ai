@@ -20,12 +20,16 @@ class CutListRemoteDataSources @Inject constructor(
         isLenient = true
     }
 
-    suspend fun analyze(image: List<MultipartBody.Part>): CutListResponse {
-        val jsonString = context.resources
-            .openRawResource(R.raw.dummy)
-            .bufferedReader()
-            .use { it.readText() }
+//    suspend fun analyze(image: List<MultipartBody.Part>): CutListResponse {
+//        val jsonString = context.resources
+//            .openRawResource(R.raw.dummy)
+//            .bufferedReader()
+//            .use { it.readText() }
+//
+//        return jsonFormatter.decodeFromString<CutListResponse>(jsonString)
+//    }
 
-        return jsonFormatter.decodeFromString<CutListResponse>(jsonString)
+    suspend fun analyze(image: List<MultipartBody.Part>): CutListResponse {
+        return cutListService.analyze(image)
     }
 }

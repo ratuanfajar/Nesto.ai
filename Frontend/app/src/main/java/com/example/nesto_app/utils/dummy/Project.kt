@@ -384,16 +384,16 @@ val cutList2 = CutList(
 
 @OptIn(ExperimentalTime::class)
 val initProjects = listOf<Project>(
-    Project(
-        id = 1,
-        name = "Project Satu - Lemari Pakaian",
-        cutList = cutList1,
-        createdAt = Clock.System.now(),
-    ),
-    Project(
-        id = 2,
-        name = "Project Dua - Meja Kerja",
-        cutList = cutList2,
-        createdAt = Clock.System.now(),
-    ),
+//    Project(
+//        id = 1,
+//        name = "Project Satu - Lemari Pakaian",
+//        cutList = cutList1,
+//        createdAt = Clock.System.now(),
+//    ),
+//    Project(
+//        id = 2,
+//        name = "Project Dua - Meja Kerja",
+//        cutList = cutList2,
+//        createdAt = Clock.System.now(),
+//    ),
 )

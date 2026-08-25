@@ -50,6 +50,19 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+  nesto-fe-builder:
+    build:
+      context: ../Frontend          # ⬅️ berubah, dulunya ".." (root repo)
+      dockerfile: Dockerfile         # ⬅️ berubah, dulunya "deploy/Dockerfile.fe"
+      args:
+        WIFI_ADDRESS: "${WIFI_ADDRESS:-10.0.2.2}"
+        NESTO_API_KEY: "${NESTO_API_KEY:-}"
+    image: nesto-fe-builder:1.0.0
+    container_name: nesto-fe-builder
+    profiles: ["build-fe"]
+    volumes:
+      - ../Frontend/build-output:/output
+    command: >
+      sh -c "cp /app/app/build/outputs/apk/debug/*.apk /output/ && echo 'APK berhasil dibuat di Frontend/build-output/'"
 volumes:
   hf-cache:

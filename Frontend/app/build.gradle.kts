@@ -1,3 +1,17 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+val envProps = Properties().apply {
+    val envFile = rootProject.file(".env")
+    if (envFile.exists()) {
+        load(FileInputStream(envFile))
+    }
+}
+
+fun envVar(key: String, default: String = ""): String {
+    return System.getenv(key) ?: envProps.getProperty(key) ?: default
+}
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -22,6 +36,17 @@ android {
         versionCode = 1
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "API_BASE_URL",
+            "\"http://${envVar("WIFI_ADDRESS", "10.0.2.2")}:8000/\""
+        )
+        buildConfigField(
+            "String",
+            "NESTO_API_KEY",
+            "\"${envVar("NESTO_API_KEY")}\""
+        )
     }
 
     buildTypes {
@@ -43,6 +68,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     kotlinOptions {
         freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
