@@ -63,7 +63,7 @@ object NetworkModule {
             .addInterceptor(apiKeyInterceptor)
             .addInterceptor(loggingInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(0, TimeUnit.SECONDS)
             .build()
     }
 
